@@ -23,10 +23,10 @@ Route::get('/', function () {
 
 
 /*Route for Admin*/
-Route::get('/admin',[AdminController::class,'index']);
+Route::get('/admin',[AdminController::class,'showdashboard']);
 Route::get('/admin/login',[LoginController::class,'index']);
 Route::post('/admin/login/store',[LoginController::class,'store']);
 Route::get('/admin/dashboard',[AdminController::class,'showdashboard']);
-Route::get('/admin/dashboard', [MainController::class, 'index']) -> name('admin');
+/*Route::get('/admin/dashboard', [MainController::class, 'index']) -> name('admin');*/
 
 
