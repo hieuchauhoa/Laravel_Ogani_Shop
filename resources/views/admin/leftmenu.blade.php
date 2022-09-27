@@ -11,13 +11,13 @@
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="javascript:;">
+                    <a href="/admin/product">
                         <i class="fa fa-book"></i>
                         <span>Products</span>
                     </a>
                     <ul class="sub">
-						<li><a href="typography.html">Add Product</a></li>
-						<li><a href="glyphicon.html">List Product</a></li>
+						<li><a href="/admin/product/add">Add Product</a></li>
+						<li><a href="/admin/product/list">List Product</a></li>
                     </ul>
                 </li>
                 <li>
@@ -27,13 +27,13 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="">
+                    <a href="/admin/cate">
                         <i class="fa fa-th"></i>
                         <span>Category</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="basic_table.html">Add Category</a></li>
-                        <li><a href="responsive_table.html">List Category</a></li>
+                        <li><a href="/admin/cate/add">Add Category</a></li>
+                        <li><a href="/admin/cate/list">List Category</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

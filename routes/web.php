@@ -27,6 +27,13 @@ Route::get('/admin',[AdminController::class,'showdashboard']);
 Route::get('/admin/login',[LoginController::class,'index']);
 Route::post('/admin/login/store',[LoginController::class,'store']);
 Route::get('/admin/dashboard',[AdminController::class,'showdashboard']);
-/*Route::get('/admin/dashboard', [MainController::class, 'index']) -> name('admin');*/
+Route::post('/admin/admin-dashboard',[AdminController::class, 'log_in']);
+Route::get('/admin/log_out',[AdminController::class, 'log_out']);
+
+
+    /*Menu */
+    Route::prefix('menus')->group(function(){
+
+    });
 
 
