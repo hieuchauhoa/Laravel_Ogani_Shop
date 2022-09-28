@@ -87,13 +87,9 @@
                         <li><a href="registration.html">Registration</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="login.html">
-                        <i class="fa fa-user"></i>
-                        <span>Login Page</span>
-                    </a>
-                </li>
-            </ul>            </div>
+    
+            </ul>            
+        </div>
         <!-- sidebar menu end-->
     </div>
 </aside>
