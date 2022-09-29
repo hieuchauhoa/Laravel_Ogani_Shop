@@ -37,7 +37,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			Session::put('message', null);
 		}
 	?>
-		<form action="{{('admin-dashboard')}}" method="post">
+		<form action="{{('adminlayout')}}" method="post">
 			<input type="email" class="ggg" name="email" placeholder="E-MAIL" required="">
 			<input type="password" class="ggg" name="password" placeholder="PASSWORD" required="">
 			<span><input type="checkbox" name="remember"/>Nhớ tài khoản</span>

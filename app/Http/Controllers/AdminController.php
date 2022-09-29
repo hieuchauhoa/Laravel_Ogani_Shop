@@ -11,18 +11,21 @@ session_start();
 
 class AdminController extends Controller
 {
+    public function adminlayout(){
+        return view('admin.adminlayout', ['title'=>'Trang quản lý']);
+    }
     public function showdashboard(){
-        return view('admin.dashboard', ['title'=>'Trang quản lý']);
+        return view('admin.dashboard', ['title'=>'Trang thống kê']);
     }
     //Kiểm tra tài khoản admin
     public function log_in(Request $request){
         $admin_email = $request->email;
         $admin_password = md5($request->password);
-        $result = DB::table('users')->where('email', $admin_email)->where('password', $admin_password)->first();
+        $result = DB::table('admin_users')->where('email', $admin_email)->where('password', $admin_password)->first();
         if($result){
             Session::put('admin_name', $result->name);
             Session::put('admin_id', $result->id);
-            return Redirect::to('/admin/dashboard');
+            return Redirect::to('/admin/adminlayout');
         }else{
             Session::put('message', 'Email hoặc mật khẩu không chính xác!!!');
             return Redirect::to('/admin/login');;

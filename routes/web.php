@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\Admin\LoginController;
 use \App\Http\Controllers\Admin\MainController;
 use \App\Http\Controllers\AdminController;
+use \App\Http\Controllers\Admin\CategoryProduct;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,17 +24,21 @@ Route::get('/', function () {
 
 
 /*Route for Admin*/
-Route::get('/admin',[AdminController::class,'showdashboard']);
-Route::get('/admin/login',[LoginController::class,'index']);
-Route::post('/admin/login/store',[LoginController::class,'store']);
-Route::get('/admin/dashboard',[AdminController::class,'showdashboard']);
-Route::post('/admin/admin-dashboard',[AdminController::class, 'log_in']);
-Route::get('/admin/log_out',[AdminController::class, 'log_out']);
+    Route::get('/admin',[AdminController::class,'showdashboard']);
+    Route::get('/admin/login',[LoginController::class,'index']);
+    Route::get('/admin/dashboard',[AdminController::class,'showdashboard']);
+    Route::post('/admin/adminlayout',[AdminController::class, 'log_in']);
+    Route::get('/admin/adminlayout',[AdminController::class, 'adminlayout']);
+    Route::get('/admin/log_out',[AdminController::class, 'log_out']);
+
+    /*Route for Category Product*/
+        Route::get('/admin/cate_add',[CategoryProduct::class, 'add']);
+        Route::get('/admin/cate_all',[CategoryProduct::class, 'all']);
 
 
-    /*Menu */
-    Route::prefix('menus')->group(function(){
 
-    });
+    
+
+?>
 
 

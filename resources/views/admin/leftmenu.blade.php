@@ -4,14 +4,14 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a class="active" href="admin/dashboard">
+                    <a class="active" href="dashboard">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
                 
                 <li class="sub-menu">
-                    <a href="/admin/product">
+                    <a href="product">
                         <i class="fa fa-book"></i>
                         <span>Products</span>
                     </a>
@@ -27,13 +27,13 @@
                     </a>
                 </li>
                 <li class="sub-menu">
-                    <a href="/admin/cate">
+                    <a href="cate">
                         <i class="fa fa-th"></i>
                         <span>Category</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="/admin/cate/add">Add Category</a></li>
-                        <li><a href="/admin/cate/list">List Category</a></li>
+                        <li><a href="cate_add">Add Category</a></li>
+                        <li><a href="cate_all">All Category</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">
