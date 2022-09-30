@@ -34,6 +34,8 @@ Route::get('/', function () {
     /*Route for Category Product*/
         Route::get('/admin/cate_add',[CategoryProduct::class, 'add']);
         Route::get('/admin/cate_all',[CategoryProduct::class, 'all']);
+        Route::post('/admin/save_category',[CategoryProduct::class, 'save_category']);
+
 
 
 
