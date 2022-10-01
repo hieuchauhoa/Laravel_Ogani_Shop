@@ -16,8 +16,8 @@
                         <span>Products</span>
                     </a>
                     <ul class="sub">
-						<li><a href="/admin/product/add">Add Product</a></li>
-						<li><a href="/admin/product/list">List Product</a></li>
+						<li><a href="product_add">Add Product</a></li>
+						<li><a href="product_list">List Product</a></li>
                     </ul>
                 </li>
                 <li>

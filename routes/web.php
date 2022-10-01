@@ -5,6 +5,7 @@ use \App\Http\Controllers\Admin\LoginController;
 use \App\Http\Controllers\Admin\MainController;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\Admin\CategoryProduct;
+use \App\Http\Controllers\Admin\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,16 @@ Route::get('/', function () {
     Route::get('/admin/adminlayout',[AdminController::class, 'adminlayout']);
     Route::get('/admin/log_out',[AdminController::class, 'log_out']);
 
-    /*Route for Category Product*/
+    /*Category Product*/
         Route::get('/admin/cate_add',[CategoryProduct::class, 'add']);
         Route::get('/admin/cate_all',[CategoryProduct::class, 'all']);
         Route::post('/admin/save_category',[CategoryProduct::class, 'save_category']);
+
+    /*Product*/
+        Route::get('/admin/product_add',[ProductController::class, 'create']);
+        Route::get('/admin/product_list',[ProductController::class, 'index']);
+        Route::post('/admin/save_product',[ProductController::class, 'save_category']);
+
 
 
 

@@ -17,7 +17,7 @@ class CategoryProduct extends Controller
     }
 
     public function all(){
-        return view('admin.cate_all', ['title'=>'Trang danh mục']);        
+        return view('admin.cate_all', ['title'=>'Danh sách danh mục']);        
     }
     public function save_category(Request $request){
         $data = array();
