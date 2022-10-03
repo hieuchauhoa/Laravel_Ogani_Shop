@@ -33,7 +33,7 @@
                     </a>
                     <ul class="sub">
                         <li><a href="cate_add">Add Category</a></li>
-                        <li><a href="cate_all">All Category</a></li>
+                        <li><a href="cate_list">All Category</a></li>
                     </ul>
                 </li>
                 <li class="sub-menu">

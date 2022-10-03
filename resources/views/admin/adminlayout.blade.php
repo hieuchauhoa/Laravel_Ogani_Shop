@@ -25,6 +25,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="{{asset('./public/backend/js/jquery2.0.3.min.js')}}"></script>
 	<script src="{{asset('./public/backend/js/raphael-min.js')}}"></script>
 	<script src="{{asset('./public/backend/js/morris.js')}}"></script>
+	<script src="{{asset('./public/ckeditor/ckeditor.js')}}"></script>
 </head>
 <body>
     <section id="container">
@@ -35,6 +36,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <!--main content-->
         <section id="main-content">
 			<section class="wrapper">
+				@include('admin.alert')
 	        	<!--@yield('content');-->
             	@yield('admin_content')
 			</section>
@@ -46,6 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<script src="{{asset('./public/backend/js/scripts.js')}}"></script>
 	<script src="{{asset('./public/backend/js/jquery.slimscroll.js')}}"></script>
 	<script src="{{asset('./public/backend/js/jquery.nicescroll.js')}}"></script>
+	
 	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 	<script src="{{asset('./public/backend/js/jquery.scrollTo.js')}}"></script>
 	<!-- morris JavaScript -->	

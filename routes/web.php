@@ -33,14 +33,16 @@ Route::get('/', function () {
     Route::get('/admin/log_out',[AdminController::class, 'log_out']);
 
     /*Category Product*/
-        Route::get('/admin/cate_add',[CategoryProduct::class, 'add']);
-        Route::get('/admin/cate_all',[CategoryProduct::class, 'all']);
-        Route::post('/admin/save_category',[CategoryProduct::class, 'save_category']);
+        Route::get('/admin/cate_add',[CategoryProduct::class, 'create']);
+        Route::get('/admin/cate_list',[CategoryProduct::class, 'index']);
+        /*Route::post('/admin/save_category',[CategoryProduct::class, 'save_category']);*/
+        Route::post('/admin/save_category',[CategoryProduct::class, 'store']);
 
     /*Product*/
         Route::get('/admin/product_add',[ProductController::class, 'create']);
         Route::get('/admin/product_list',[ProductController::class, 'index']);
-        Route::post('/admin/save_product',[ProductController::class, 'save_category']);
+        /*Route::post('/admin/save_product',[ProductController::class, 'save_category']);*/
+        Route::post('/admin/save_product',[ProductController::class, 'store']);
 
 
 
