@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 30, 2022 lúc 07:52 AM
+-- Thời gian đã tạo: Th10 03, 2022 lúc 04:19 PM
 -- Phiên bản máy phục vụ: 10.4.21-MariaDB
 -- Phiên bản PHP: 7.4.23
 
@@ -35,15 +35,16 @@ CREATE TABLE `admin_users` (
   `level` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Đang đổ dữ liệu cho bảng `admin_users`
 --
 
-INSERT INTO `admin_users` (`id`, `name`, `email`, `password`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '100', 'LqqsfGhinUkm3Rh5DLiP7EqVKU61F6l0JMU0DhOodMsHeWNfGQ3i4KoGw2zi', '2022-09-25 00:38:38', '2022-09-25 02:46:22');
+INSERT INTO `admin_users` (`id`, `name`, `email`, `password`, `level`, `remember_token`, `created_at`, `updated_at`, `status`) VALUES
+(1, 'admin', 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '100', 'LqqsfGhinUkm3Rh5DLiP7EqVKU61F6l0JMU0DhOodMsHeWNfGQ3i4KoGw2zi', '2022-09-25 00:38:38', '2022-09-25 02:46:22', 1);
 
 -- --------------------------------------------------------
 
@@ -66,44 +67,46 @@ CREATE TABLE `banners` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Cấu trúc bảng cho bảng `categories`
 --
 
-CREATE TABLE `category` (
+CREATE TABLE `categories` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `parent_id` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `active` int(11) NOT NULL DEFAULT 1,
+  `description` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `category`
+-- Đang đổ dữ liệu cho bảng `categories`
 --
 
-INSERT INTO `category` (`id`, `name`, `slug`, `parent_id`, `created_at`, `updated_at`) VALUES
-(1, 'Mobile - Điện thoại', 'mobile-dien-thoai', '0', '2016-11-23 20:01:57', '2016-11-26 03:03:56'),
-(2, 'LAPTOP - Máy tính xách tay', 'laptop-may-tinh-xach-tay', '0', '2016-11-23 20:10:10', '2016-11-26 03:04:07'),
-(3, 'Asus - ZenFones', 'asus-zenfones', '1', '2016-11-23 20:17:01', '2016-11-23 20:42:30'),
-(4, 'Samsung', 'samsung', '1', '2016-11-23 20:17:39', '2016-11-23 20:17:39'),
-(9, 'DELL', 'dell', '2', '2016-11-24 01:36:10', '2016-11-24 01:36:10'),
-(10, 'ASUS', 'asus', '2', '2016-11-24 01:36:21', '2016-11-24 01:36:21'),
-(11, 'HP', 'hp', '2', '2016-11-24 01:36:31', '2016-11-24 01:36:31'),
-(13, 'TIN TỨC - KHUYỄN MẠI', 'tin-tuc-khuyen-mai', '0', '2016-11-24 01:38:46', '2016-11-24 01:38:46'),
-(14, 'QUẢNG CÁO - BANNER', 'quang-cao-banner', '0', '2016-11-24 01:38:57', '2016-11-24 01:38:57'),
-(15, 'Apple (Iphone)', 'apple-iphone', '1', '2016-11-24 01:56:05', '2016-11-24 01:56:05'),
-(16, 'OPPO', 'oppo', '1', '2016-11-25 02:00:27', '2016-11-25 02:00:27'),
-(17, 'Sony', 'sony', '1', '2016-11-25 02:00:41', '2016-11-25 02:00:41'),
-(18, 'LENOVO', 'lenovo', '2', '2016-11-25 02:00:52', '2016-11-25 02:00:52'),
-(19, 'PC - Máy bộ', 'pc-may-bo', '0', '2016-11-26 00:36:11', '2016-11-26 00:36:11'),
-(20, 'Máy bộ DELL', 'may-bo-dell', '19', '2016-11-26 00:36:27', '2016-11-26 00:36:27'),
-(21, 'Máy bộ Asus - Gamming', 'may-bo-asus-gamming', '19', '2016-11-26 00:36:48', '2016-11-26 00:36:48'),
-(22, 'Tin Công Nghệ', 'tin-cong-nghe', '13', '2016-11-28 18:40:09', '2016-11-28 18:40:09'),
-(24, 'test', 'test cho vui', '', '2022-09-29 13:21:33', '2022-09-29 13:21:33'),
-(25, 'Gamming', 'Choi game thoai mai', '0', NULL, NULL),
-(26, 'Gamming', 'Choi game thoai mai', '0', NULL, NULL),
-(27, 'Gamming', 'h', '0', NULL, NULL);
+INSERT INTO `categories` (`id`, `name`, `slug`, `parent_id`, `created_at`, `updated_at`, `active`, `description`) VALUES
+(1, 'Mobile - Điện thoại', 'mobile-dien-thoai', '0', '2016-11-23 20:01:57', '2016-11-26 03:03:56', 1, NULL),
+(2, 'LAPTOP - Máy tính xách tay', 'laptop-may-tinh-xach-tay', '0', '2016-11-23 20:10:10', '2016-11-26 03:04:07', 1, NULL),
+(3, 'Asus - ZenFones', 'asus-zenfones', '1', '2016-11-23 20:17:01', '2016-11-23 20:42:30', 1, NULL),
+(4, 'Samsung', 'samsung', '1', '2016-11-23 20:17:39', '2016-11-23 20:17:39', 1, NULL),
+(9, 'DELL', 'dell', '2', '2016-11-24 01:36:10', '2016-11-24 01:36:10', 1, NULL),
+(10, 'ASUS', 'asus', '2', '2016-11-24 01:36:21', '2016-11-24 01:36:21', 1, NULL),
+(11, 'HP', 'hp', '2', '2016-11-24 01:36:31', '2016-11-24 01:36:31', 1, NULL),
+(13, 'TIN TỨC - KHUYỄN MẠI', 'tin-tuc-khuyen-mai', '0', '2016-11-24 01:38:46', '2016-11-24 01:38:46', 1, NULL),
+(14, 'QUẢNG CÁO - BANNER', 'quang-cao-banner', '0', '2016-11-24 01:38:57', '2016-11-24 01:38:57', 1, NULL),
+(15, 'Apple (Iphone)', 'apple-iphone', '1', '2016-11-24 01:56:05', '2016-11-24 01:56:05', 1, NULL),
+(16, 'OPPO', 'oppo', '1', '2016-11-25 02:00:27', '2016-11-25 02:00:27', 1, NULL),
+(17, 'Sony', 'sony', '1', '2016-11-25 02:00:41', '2016-11-25 02:00:41', 1, NULL),
+(18, 'LENOVO', 'lenovo', '2', '2016-11-25 02:00:52', '2016-11-25 02:00:52', 1, NULL),
+(19, 'PC - Máy bộ', 'pc-may-bo', '0', '2016-11-26 00:36:11', '2016-11-26 00:36:11', 1, NULL),
+(20, 'Máy bộ DELL', 'may-bo-dell', '19', '2016-11-26 00:36:27', '2016-11-26 00:36:27', 1, NULL),
+(21, 'Máy bộ Asus - Gamming', 'may-bo-asus-gamming', '19', '2016-11-26 00:36:48', '2016-11-26 00:36:48', 1, NULL),
+(22, 'Tin Công Nghệ', 'tin-cong-nghe', '13', '2016-11-28 18:40:09', '2016-11-28 18:40:09', 1, NULL),
+(24, 'test', 'test cho vui', '', '2022-09-29 13:21:33', '2022-09-29 13:21:33', 1, NULL),
+(25, 'Gamming', 'Choi game thoai mai', '0', NULL, NULL, 1, NULL),
+(34, 'Huỳnh Chí Cường', 'huynh-chi-cuong', '0', '2022-10-03 06:01:13', '2022-10-03 06:01:13', 1, '<p>hcc</p>'),
+(36, 'Huỳnh Chí Cường con', 'huynh-chi-cuong-con', '34', '2022-10-03 06:15:30', '2022-10-03 06:15:30', 1, '<p>hcc con</p>');
 
 -- --------------------------------------------------------
 
@@ -348,15 +351,15 @@ CREATE TABLE `products` (
   `id` int(10) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `slug` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `intro` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `promo1` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `promo2` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `promo3` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `packet` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `intro` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `promo1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `promo2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `promo3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `packet` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `images` text COLLATE utf8_unicode_ci NOT NULL,
-  `r_intro` text COLLATE utf8_unicode_ci NOT NULL,
+  `r_intro` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `review` text COLLATE utf8_unicode_ci NOT NULL,
-  `tag` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `price` float NOT NULL,
   `status` int(11) NOT NULL,
   `cat_id` int(10) UNSIGNED NOT NULL,
@@ -529,10 +532,11 @@ ALTER TABLE `banners`
   ADD KEY `banners_user_id_foreign` (`user_id`);
 
 --
--- Chỉ mục cho bảng `category`
+-- Chỉ mục cho bảng `categories`
 --
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `categories`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `unique_name` (`name`);
 
 --
 -- Chỉ mục cho bảng `detail_img`
@@ -610,10 +614,10 @@ ALTER TABLE `banners`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT cho bảng `categories`
 --
-ALTER TABLE `category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+ALTER TABLE `categories`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT cho bảng `detail_img`
@@ -677,7 +681,7 @@ ALTER TABLE `detail_img`
 -- Các ràng buộc cho bảng `news`
 --
 ALTER TABLE `news`
-  ADD CONSTRAINT `news_cat_id_foreign` FOREIGN KEY (`cat_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `news_cat_id_foreign` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `news_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
@@ -697,7 +701,7 @@ ALTER TABLE `oders_detail`
 -- Các ràng buộc cho bảng `products`
 --
 ALTER TABLE `products`
-  ADD CONSTRAINT `products_cat_id_foreign` FOREIGN KEY (`cat_id`) REFERENCES `category` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `products_cat_id_foreign` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `products_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
