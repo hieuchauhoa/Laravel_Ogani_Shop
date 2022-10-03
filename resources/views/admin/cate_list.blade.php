@@ -43,7 +43,7 @@
           </tr>
         </thead>
         <tbody>
-          
+          {!! \App\Helpers\Helper::category($categories) !!}
         </tbody>
       </table>
     </div>
@@ -67,15 +67,3 @@
     </footer>
   </div>
 @endsection
-
-
-
-<tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>Videodown</td>
-            <td>4c</td>
-            <td>Jul 1, 2013</td>
-            <td>
-              <a href="" class="active" ui-toggle-class=""><i class="fa fa-edit text-success text-active"></i><i class="fa fa-times text-danger text"></i></a>
-            </td>
-          </tr>
