@@ -9,7 +9,7 @@
                         </header>
                         <div class="card-body">
                             <div class="position-center">
-                                <form role="form" action="{{('save_category')}}" method="post">
+                                <form action="{{('save_category')}}" method="post">
                                 @csrf
                                 <div class="form-group">
                                     <label for="name">Tên danh mục</label>
@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Mô tả</label>
-                                    <textarea class="form-control" id="description" name="description" placeholder="Mô tả danh mục"></textarea>
+                                    <textarea class="form-control" id="desc" name="description" placeholder="Mô tả danh mục"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Kích hoạt</label>
@@ -40,6 +40,9 @@
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info">Thêm</button>
+                                    <script>
+                                        CKEDITOR.replace( 'desc' );
+                                    </script>
                                 </form>
                             </div>
                         </div>
@@ -47,7 +50,4 @@
             </div>
         </div>
     </div>
-    <script>
-        CKEDITOR.replace('description');
-    </script>
 @endsection
