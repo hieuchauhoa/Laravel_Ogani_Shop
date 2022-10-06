@@ -29,7 +29,7 @@ class CategoryService
     }
 
     public function getAll(){
-        return Category::orderbyDesc('id', 0)->paginate(10);
+        return Category::orderbyDesc('id', 0)->paginate(20);
     }
 
     public function destroy($request){

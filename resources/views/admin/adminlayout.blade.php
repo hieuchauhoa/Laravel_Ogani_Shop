@@ -50,6 +50,7 @@
 
     <!--Add ckeditor-->
     <script src="{{asset('./public/ckeditor/ckeditor.js')}}"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/35.1.0/classic/ckeditor.js"></script>
 
 	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 	<script src="{{asset('./public/backend/js/jquery.scrollTo.js')}}"></script>

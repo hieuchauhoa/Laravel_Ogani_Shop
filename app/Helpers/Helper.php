@@ -7,12 +7,12 @@ class Helper{
         $html = '';
         foreach($categories as $key => $category){
             if($category->parent_id == $parent_id){
-                $html .= '
+                $html = '
                 <tr>
-                    <td>'.$category->id .'</td>
-                    <td>'.$char. $category->name .'</td>
-                    <td>'.self::active($category->active) .'</td>
-                    <td>'.$category->updated_at.'</td>
+                    <td>'. $category->id .'</td>
+                    <td>'. $char . $category->name .'</td>
+                    <td>'. self::active($category->active) .'</td>
+                    <td>'. $category->updated_at .'</td>
                     <td>
                         <a class="btn btn-primary btn-sm" href="cate_edit/'.$category->id.'"><i class="fa fa-edit"></i></a>
                     </td>
@@ -23,7 +23,7 @@ class Helper{
 
                 unset($categories[$key]);
 
-                $html .= self::category($categories, $category->id, $char .'--');
+                $html = self::category($categories, $category->id, $char .'---');
             }
         }
         return $html;

@@ -26,7 +26,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="description">Mô tả</label>
-                                    <textarea class="form-control" id="desc" name="description" placeholder="Mô tả danh mục"></textarea>
+                                    <textarea class="form-control" id="description" name="description" placeholder="Mô tả danh mục"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Kích hoạt</label>
@@ -41,7 +41,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-info">Thêm</button>
                                     <script>
-                                        CKEDITOR.replace( 'desc' );
+                                        CKEDITOR.replace( '#description' );
                                     </script>
                                 </form>
                             </div>

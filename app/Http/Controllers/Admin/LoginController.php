@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     public function index(){
-        return view('admin.login', ['title'=>'Đăng nhập hệ thống']);
+        return view('admin.login1', ['title'=>'Đăng nhập hệ thống']);
     }
     public function store(Request $request){
         $this->validate($request, [
