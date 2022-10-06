@@ -1,9 +1,8 @@
 @extends('admin.adminlayout')
-@section('admin_content')
+@section('content')
 <div class="table-agile-info">
-  <div class="panel panel-default">
     <div class="panel-heading">
-      All Category
+      Danh sách danh mục
     </div>
     <div class="row w3-res-tb">
       <div class="col-sm-5 m-b-xs">
@@ -30,16 +29,12 @@
       <table class="table table-striped b-t b-light">
         <thead>
           <tr>
-            <th style="width:20px;">
-              <label class="i-checks m-b-none">
-                <input type="checkbox"><i></i>
-              </label>
-            </th>
             <th>ID</th>
             <th>Name</th>
             <th>Active</th>
             <th>Update</th>
-            <th style="width:30px;"></th>
+            <th style="width:20px;"></th>
+            <th style="width:20px;"></th>
           </tr>
         </thead>
         <tbody>

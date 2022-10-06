@@ -3,8 +3,7 @@
 	<title>Admin</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="keywords" content="Visitors Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+	<meta name="keywords" content="" />
 	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 	<!-- bootstrap-css -->
 	<link rel="stylesheet" href="{{asset('./public/backend/css/bootstrap.min.css')}}" >
@@ -20,12 +19,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<link rel="stylesheet" href="{{asset('./public/backend/css/morris.css')}}" type="text/css"/>
 	<!-- calendar -->
 	<link rel="stylesheet" href="{{asset('./public/backend/css/monthly.css')}}">
-	<!-- //calendar -->
-	<!-- //font-awesome icons -->
-	<script src="{{asset('./public/backend/js/jquery2.0.3.min.js')}}"></script>
-	<script src="{{asset('./public/backend/js/raphael-min.js')}}"></script>
-	<script src="{{asset('./public/backend/js/morris.js')}}"></script>
-	<script src="{{asset('./public/ckeditor/ckeditor.js')}}"></script>
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
     <section id="container">
@@ -38,16 +32,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<section class="wrapper">
 				@include('admin.alert')
 	        	<!--@yield('content');-->
-            	@yield('admin_content')
+            	@yield('content')
 			</section>
 		</section>
 		<!--main content end-->
 	</section>
+	<script src="{{asset('./public/backend/js/jquery2.0.3.min.js')}}"></script>
+	<script src="{{asset('./public/backend/js/raphael-min.js')}}"></script>
+	<script src="{{asset('./public/backend/js/morris.js')}}"></script>
+	<script src="{{asset('./public/ckeditor/ckeditor.js')}}"></script>
 	<script src="{{asset('./public/backend/js/bootstrap.js')}}"></script>
 	<script src="{{asset('./public/backend/js/jquery.dcjqaccordion.2.7.js')}}"></script>
 	<script src="{{asset('./public/backend/js/scripts.js')}}"></script>
 	<script src="{{asset('./public/backend/js/jquery.slimscroll.js')}}"></script>
 	<script src="{{asset('./public/backend/js/jquery.nicescroll.js')}}"></script>
+	<script src="{{asset('./public/backend/js/main.js')}}"></script>
 	
 	<!--[if lte IE 8]><script language="javascript" type="text/javascript" src="js/flot-chart/excanvas.min.js"></script><![endif]-->
 	<script src="{{asset('./public/backend/js/jquery.scrollTo.js')}}"></script>

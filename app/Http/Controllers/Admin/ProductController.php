@@ -5,8 +5,24 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\Product\CreateFormRequest;
+use App\Http\Services\Category\CategoryService;
+use App\Http\Services\Product\ProductService;
+use DB;
+use App\Http\Requests;
+use Session;
+use Illuminate\Support\Facades\Redirect;
+session_start();
+
 class ProductController extends Controller
 {
+    protected $categoryService;
+    protected $productService;
+
+    public function __construct(CategoryService $categoryService, ProductService $productService){
+        $this->categoryService = $categoryService;
+        $this->productService = $productService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +30,10 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product_list', ['title'=>'Danh sách sản phẩm']);
+        return view('admin.product_list', [
+            'title'=>'Danh sách sản phẩm',
+            'products'=>$this->productService->getAll()
+        ]);  
     }
 
     /**
@@ -24,7 +43,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product_add', ['title'=>'Thêm sản phẩm']);
+        return view('admin.product_add', [
+            'title'=>'Thêm sản phẩm',
+            'categories'=>$this->categoryService->getParent()
+        ]);
     }
 
     /**
@@ -33,9 +55,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(CreateFormRequest $request){
+        dd($request->input());
     }
 
     /**

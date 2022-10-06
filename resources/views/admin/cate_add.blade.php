@@ -1,5 +1,5 @@
 @extends('admin.adminlayout')
-@section('admin_content')
+@section('content')
     <div class="form-w3layouts">
         <div class="row">
             <div class="col-lg-12">
@@ -7,13 +7,6 @@
                         <header class="panel-heading">
                             Thêm danh mục mới
                         </header>
-                        <?php
-		                    $msg = Session::get('message');
-		                    if($msg){
-                                echo "<script type='text/javascript'>alert('$msg');</script>";
-			                    Session::put('message', null);
-		                    }
-	                    ?>
                         <div class="card-body">
                             <div class="position-center">
                                 <form role="form" action="{{('save_category')}}" method="post">
@@ -26,8 +19,8 @@
                                     <label for="parent_id">Danh mục cha</label>
                                     <select name="parent_id" id="parent_id" class="form-control">
                                         <option value="0">Không có</option>
-                                        @foreach($categories as $category)
-                                            <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @foreach($categories as $cate)
+                                            <option value="{{$cate->id}}">{{$cate->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -39,11 +32,11 @@
                                     <label>Kích hoạt</label>
                                     <div class="custom-control custom-radio">
                                         <input class="custom-control-input" value="1" type="radio" id="active" name="active" checked="">
-                                        <lable for="active" class="custom-control-label">Có</label>
+                                        <label for="active" class="custom-control-label">Có</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input class="custom-control-input" value="0" type="radio" id="no_active" name="active">
-                                        <lable for="active" class="custom-control-label">Không</label>
+                                        <label for="active" class="custom-control-label">Không</label>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-info">Thêm</button>
@@ -51,8 +44,7 @@
                             </div>
                         </div>
                     </section>
-
-            </div>   
+            </div>
         </div>
     </div>
     <script>

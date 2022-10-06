@@ -1,5 +1,5 @@
 @extends('admin.adminlayout')
-@section('admin_content')
+@section('content')
 <div class="market-updates">
 			<div class="col-md-3 market-update-gd">
 				<div class="market-update-block clr-block-2">

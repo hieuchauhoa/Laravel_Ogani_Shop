@@ -37,6 +37,10 @@ Route::get('/', function () {
         Route::get('/admin/cate_list',[CategoryProduct::class, 'index']);
         /*Route::post('/admin/save_category',[CategoryProduct::class, 'save_category']);*/
         Route::post('/admin/save_category',[CategoryProduct::class, 'store']);
+        Route::DELETE('/admin/cate_destroy',[CategoryProduct::class, 'destroy']);
+        Route::get('/admin/cate_edit/{category}',[CategoryProduct::class, 'show']);
+        Route::post('/admin/cate_edit/{category}',[CategoryProduct::class, 'update']);
+
 
     /*Product*/
         Route::get('/admin/product_add',[ProductController::class, 'create']);
@@ -48,7 +52,7 @@ Route::get('/', function () {
 
 
 
-    
+
 
 ?>
 

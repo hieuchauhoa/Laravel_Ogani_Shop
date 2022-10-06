@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Category\CreateFormRequest;
 use App\Http\Services\Category\CategoryService;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 use DB;
 use App\Http\Requests;
 use Session;
@@ -21,7 +23,7 @@ class CategoryProduct extends Controller
     }
 
 
-    public function create(){  
+    public function create(){
         return view('admin.cate_add', [
             'title'=>'Thêm danh mục mới',
             'categories'=>$this->categoryService->getParent()
@@ -32,7 +34,7 @@ class CategoryProduct extends Controller
         return view('admin.cate_list', [
             'title'=>'Danh sách danh mục',
             'categories'=>$this->categoryService->getAll()
-        ]);        
+        ]);
     }
     public function save_category(Request $request){
         $data = array();
@@ -47,5 +49,31 @@ class CategoryProduct extends Controller
         $result = $this->categoryService->create($request);
         return Redirect()->back();
         //dd($request->input());
+    }
+
+    public function show(Category $category){
+        return view('admin.cate_edit', [
+            'title'=>'Chỉnh sửa danh mục' . $category->name,
+            'category'=>$category,
+            'categories'=>$this->categoryService->getParent()
+        ]);
+    }
+
+    public function update(Category $category, CreateFormRequest $request){
+        $this->categoryService->update($request, $category);
+        return redirect('admin/cate_list');
+    }
+
+    public function destroy(Request $request): JsonResponse{
+        $result = $this->categoryService->destroy($request);
+        if($result){
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công danh mục'
+            ]);
+        }
+        return response()->json([
+            'error' => true
+        ]);
     }
 }

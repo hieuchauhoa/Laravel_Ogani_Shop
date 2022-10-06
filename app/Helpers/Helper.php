@@ -8,13 +8,17 @@ class Helper{
         foreach($categories as $key => $category){
             if($category->parent_id == $parent_id){
                 $html .= '
-                <tr>  
-                    <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+                <tr>
                     <td>'.$category->id .'</td>
                     <td>'.$char. $category->name .'</td>
-                    <td>'.$category->active .'</td>
+                    <td>'.self::active($category->active) .'</td>
                     <td>'.$category->updated_at.'</td>
-                    <td><a href="" class="active" ui-toggle-class=""><i class="fa fa-edit text-success text-active"></i><i class="fa fa-times text-danger text"></i></a></td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="cate_edit/'.$category->id.'"><i class="fa fa-edit"></i></a>
+                    </td>
+                    <td>
+                        <a class="btn btn-danger btn-sm" href="" onclick="removeRow('.$category->id.', \'cate_destroy\')"><i class="fa fa-trash"></i></a>
+                    </td>
                 </tr>';
 
                 unset($categories[$key]);
@@ -23,5 +27,8 @@ class Helper{
             }
         }
         return $html;
+    }
+    public static function active($active = 0) : string{
+        return $active == 0 ? '<span class="btn btn-danger btn-xs">No</span>' : '<span class="btn btn-success btn-xs">Yes</span>';
     }
 }

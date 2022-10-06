@@ -31,4 +31,29 @@ class CategoryService
     public function getAll(){
         return Category::orderbyDesc('id', 0)->paginate(10);
     }
+
+    public function destroy($request){
+        $category = Category::where('id', $request->input('id'))->first();
+        $id = (int) $request->input('id');
+        if($category){
+            return Category::where('id', $id)->orWhere('parent_id', $id)->delete();
+        }
+        return false;
+    }
+
+    public function update($request, $category) : bool{
+       try{
+           $category->name = (string) $request->input('name');
+           $category->parent_id = (int) $request->input('parent_id');
+           $category->description = (string) $request->input('description');
+           $category->active = (string) $request->input('active');
+           $category->save();
+
+           Session::flash('success', 'Cập nhật danh mục thành công');
+       } catch (\Exception $err) {
+           Session::flash('error', $err->getMessage());
+           return false;
+       }
+       return true;
+    }
 }

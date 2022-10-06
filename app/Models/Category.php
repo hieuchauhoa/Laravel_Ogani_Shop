@@ -9,6 +9,10 @@ class Category extends Model
 {
     use HasFactory;
 
+    /**
+     * @var mixed
+     */
+    public $name;
     protected $fillable = [
         'name',
         'parent_id',
