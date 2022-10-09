@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <form action="{{('save_category')}}" method="post">
+    <form action="save_category" method="post">
         @csrf
         <div class="card-body">
             <div class="form-group">

@@ -12,9 +12,9 @@ class ProductService
             Category::create([
                 'name' => (string) $request->input('name'),
                 'cate_id' => (int) $request->input('cate_id'),
-                'packet' => (string) $request->input('paket'),
+                'packet' => (string) $request->input('packet'),
                 'review' => (string) $request->input('review'),
-                'images' => (string) $request->input('images'),
+                'images' => (string) $request->input('file'),
                 'active' => (string) $request->input('active'),
                 'slug' => Str::slug($request->input('name'), '-')
             ]);
