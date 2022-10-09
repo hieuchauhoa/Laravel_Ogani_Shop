@@ -12,10 +12,14 @@ session_start();
 class AdminController extends Controller
 {
     public function adminlayout(){
-        return view('admin.adminlayout', ['title'=>'Trang quản lý']);
+        //return view('admin.adminlayout', ['title'=>'Trang quản lý']);
+        return view('admin.home', ['title'=>'Trang quản lý']);
     }
     public function showdashboard(){
         return view('admin.dashboard', ['title'=>'Trang thống kê']);
+    }
+    public function index(){
+        return view('admin.home', ['title'=>'Trang quản lý']);
     }
     //Kiểm tra tài khoản admin
     public function log_in(Request $request){
@@ -25,7 +29,7 @@ class AdminController extends Controller
         if($result){
             Session::put('admin_name', $result->name);
             Session::put('admin_id', $result->id);
-            return Redirect::to('/admin/adminlayout');
+            return Redirect::to('/admin/home');
         }else{
             Session::put('message', 'Email hoặc mật khẩu không chính xác!!!');
             return Redirect::to('/admin/login');;

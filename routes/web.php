@@ -23,12 +23,21 @@ Route::get('/', function () {
 });
 
 
-
 /*Route for Admin*/
-    Route::get('/admin',[AdminController::class,'showdashboard']);
-    Route::get('/admin/login',[LoginController::class,'index']);
+    Route::get('admin',[AdminController::class,'index']);
+    Route::get('admin/login',[LoginController::class,'index'])->name('login');
+    Route::post('admin/admin_login',[LoginController::class, 'store']);
+
+    Route::middleware(['auth'])->group(function (){
+        Route::get('admin/main', [MainController::class, 'index'])->name('admin');
+        Route::get('admin',[MainController::class,'index']);
+    });
+
+    Route::get('/admin/home',[AdminController::class, 'adminlayout']);
+
     Route::get('/admin/dashboard',[AdminController::class,'showdashboard']);
-    Route::post('/admin/adminlayout',[AdminController::class, 'log_in']);
+    //Route::post('/admin/adminlayout',[AdminController::class, 'log_in']);
+
     Route::get('/admin/adminlayout',[AdminController::class, 'adminlayout']);
     Route::get('/admin/log_out',[AdminController::class, 'log_out']);
 

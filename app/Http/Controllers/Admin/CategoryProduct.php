@@ -8,11 +8,8 @@ use App\Http\Services\Category\CategoryService;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
-use DB;
 use App\Http\Requests;
-use Session;
 use Illuminate\Support\Facades\Redirect;
-session_start();
 
 class CategoryProduct extends Controller
 {
@@ -53,7 +50,7 @@ class CategoryProduct extends Controller
 
     public function show(Category $category){
         return view('admin.cate_edit', [
-            'title'=>'Chỉnh sửa danh mục' . $category->name,
+            'title'=>'Chỉnh sửa danh mục:  ' . $category->name,
             'category'=>$category,
             'categories'=>$this->categoryService->getParent()
         ]);

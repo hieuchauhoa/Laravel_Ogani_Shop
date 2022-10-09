@@ -3,11 +3,12 @@
 namespace App\Helpers;
 
 class Helper{
-    public static function category($categories, $parent_id = 0, $char = ''){
+    public static function category($categories, $parent_id = 0, $char = ''): string
+    {
         $html = '';
         foreach($categories as $key => $category){
             if($category->parent_id == $parent_id){
-                $html = '
+                $html .= '
                 <tr>
                     <td>'. $category->id .'</td>
                     <td>'. $char . $category->name .'</td>
@@ -23,7 +24,7 @@ class Helper{
 
                 unset($categories[$key]);
 
-                $html = self::category($categories, $category->id, $char .'---');
+                $html .= self::category($categories, $category->id, $char .'---');
             }
         }
         return $html;

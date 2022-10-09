@@ -6,7 +6,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <a href="../../index2.html"><b>Admin</b>LTE</a>
+        <a href=""><b>Admin</b></a>
     </div>
     <?php
     $msg = Session::get('message');
@@ -19,10 +19,10 @@
     <div class="card">
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
-
-            <form action="{{('adminlayout')}}" method="post">
+            @include('admin.alert')
+            <form action="admin_login" method="post">
                 <div class="input-group mb-3">
-                    <input name="email" type="email" class="form-control" placeholder="Email">
+                    <input id="email" name="email" type="email" class="form-control" placeholder="Email">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-envelope"></span>
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 <div class="input-group mb-3">
-                    <input type="password" name="password"class="form-control" placeholder="Password">
+                    <input type="password" name="password"class="form-control" placeholder="Password" id="password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-lock"></span>
@@ -52,6 +52,7 @@
                     </div>
                     <!-- /.col -->
                 </div>
+                @csrf
             </form>
 
             <p class="mb-1">
