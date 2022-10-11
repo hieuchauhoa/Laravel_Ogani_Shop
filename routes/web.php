@@ -36,7 +36,7 @@ Route::get('/', function () {
             Route::post('save_product',[ProductController::class, 'store']);
 
             #Upload
-            Route::post('upload/services', [UploadController::class, 'store']);
+            Route::post('upload', [UploadController::class, 'store']);
 
         });
     });

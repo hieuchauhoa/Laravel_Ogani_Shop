@@ -18,7 +18,7 @@
             </div>
             <div class="form-group">
                 <label for="packet">Phụ kiện</label>
-                <textarea class="form-control" style="resize: none" rows="2" id="packet" name="packet" placeholder="Nhập phụ kiện đi kèm"></textarea>
+                <textarea class="form-control" id="packet" name="packet" placeholder="Nhập phụ kiện đi kèm"></textarea>
             </div>
             <div class="form-group">
                 <label for="cate_id">Danh mục</label>
