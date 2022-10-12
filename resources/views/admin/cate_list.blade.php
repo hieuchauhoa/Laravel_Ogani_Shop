@@ -16,4 +16,5 @@
             {!! \App\Helpers\Helper::category($categories) !!}
         </tbody>
     </table>
+    {{ $categories->links() }}
 @endsection

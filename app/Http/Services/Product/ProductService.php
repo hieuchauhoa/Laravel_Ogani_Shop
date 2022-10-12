@@ -28,8 +28,10 @@ class ProductService
        return true;
     }
 
-    public function getAll(){
-        return Product::orderbyDesc('id', 0)->paginate(10);
+    public function getAll()
+    {
+        //return Product::with('category')->orderbyDesc('id', 0)->paginate(15);
+        return Product::orderbyDesc('id', '>', 100)->cursorPaginate(15);
     }
 
     protected function isValidPrice($request){

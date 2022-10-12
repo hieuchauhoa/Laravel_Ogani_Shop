@@ -19,7 +19,10 @@ class AdminController extends Controller
         return view('admin.dashboard', ['title'=>'Trang thống kê']);
     }
     public function index(){
-        return view('admin.home', ['title'=>'Trang quản lý']);
+        return view('admin.home', [
+            'title'=>'Trang quản lý',
+            'ur'=>''
+        ]);
     }
     //Kiểm tra tài khoản admin
     public function log_in(Request $request){

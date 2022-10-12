@@ -34,7 +34,8 @@ class ProductController extends Controller
     {
         return view('admin.product_list', [
             'title'=>'Danh sách sản phẩm',
-            'products'=>$this->productService->getAll()
+            'products'=>$this->productService->getAll(),
+            'ur'=>''
         ]);
     }
 
@@ -47,7 +48,8 @@ class ProductController extends Controller
     {
         return view('admin.product_add', [
             'title'=>'Thêm sản phẩm',
-            'categories'=>$this->categoryService->getParent()
+            'categories'=>$this->categoryService->getParent(),
+            'ur'=>''
         ]);
     }
 
@@ -71,9 +73,10 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         return view('admin.product_edit', [
-            'title'=>'Chỉnh sửa danh mục:  ' . $product->name,
-            'category'=>$product,
-            'categories'=>$this->productService->getAll()
+            'title'=>'Chỉnh sửa sản phẩm:  ' . $product->name,
+            'product'=>$product,
+            'products'=>$this->productService->getAll(),
+            'ur'=>''
         ]);
     }
 

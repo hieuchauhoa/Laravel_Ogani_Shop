@@ -23,14 +23,16 @@ class CategoryProduct extends Controller
     public function create(){
         return view('admin.cate_add', [
             'title'=>'Thêm danh mục mới',
-            'categories'=>$this->categoryService->getParent()
+            'categories'=>$this->categoryService->getParent(),
+            'ur'=>''
         ]);
     }
 
     public function index(){
         return view('admin.cate_list', [
             'title'=>'Danh sách danh mục',
-            'categories'=>$this->categoryService->getAll()
+            'categories'=>$this->categoryService->getAll(),
+            'ur'=>''
         ]);
     }
     public function save_category(Request $request){
@@ -52,7 +54,8 @@ class CategoryProduct extends Controller
         return view('admin.cate_edit', [
             'title'=>'Chỉnh sửa danh mục:  ' . $category->name,
             'category'=>$category,
-            'categories'=>$this->categoryService->getParent()
+            'categories'=>$this->categoryService->getParent(),
+            'ur'=>'../'
         ]);
     }
 

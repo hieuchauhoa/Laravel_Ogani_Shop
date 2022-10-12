@@ -29,7 +29,7 @@ class CategoryService
     }
 
     public function getAll(){
-        return Category::orderbyDesc('id')->paginate(20);
+        return Category::orderbyDesc('id', '>', 100)->cursorPaginate(15);
     }
 
     public function destroy($request){

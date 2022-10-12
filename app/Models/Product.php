@@ -20,4 +20,8 @@ class Product extends Model
         'slug',
         'active'
     ];
+
+    //public function category(){
+        //$this->hasOne(Category::class, 'id', 'cate_id');
+    //}s
 }

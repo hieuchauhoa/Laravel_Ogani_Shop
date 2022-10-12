@@ -10,7 +10,10 @@ use Illuminate\Support\Facades\Session;
 class LoginController extends Controller
 {
     public function index(){
-        return view('admin.login1', ['title'=>'Đăng nhập hệ thống']);
+        return view('admin.login1', [
+            'title'=>'Đăng nhập hệ thống',
+            'ur'=>''
+        ]);
     }
     public function store(Request $request){
         //dd($request->input());
