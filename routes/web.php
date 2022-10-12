@@ -13,6 +13,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/home', function () {
+    return view('welcome');
+});
+Route::get('/cart', function () {
+    return view('cart');
+});
+
+    ##Admin
     Route::get('/admin/login',[LoginController::class,'index'])->name('login');
     Route::post('/admin/admin_login',[LoginController::class, 'store']);
 
