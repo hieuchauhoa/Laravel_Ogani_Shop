@@ -25,14 +25,16 @@ class CreateFormRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'price' => 'required'
+            'price' => 'required',
+            'file' => 'required'
         ];
     }
-    
+
     public function messages(){
         return [
             'name.required' => 'Vui lòng nhập tên sản phẩm',
-            'price.required' => 'Vui lòng nhập giá sản phẩm'
+            'price.required' => 'Vui lòng nhập giá sản phẩm',
+            'file.required' => 'Vui lòng thêm ảnh cho sản phẩm'
         ];
     }
 }

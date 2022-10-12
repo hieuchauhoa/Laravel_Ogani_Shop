@@ -34,6 +34,9 @@ Route::get('/', function () {
             Route::get('product_list',[ProductController::class, 'index']);
             /*Route::post('/admin/save_product',[ProductController::class, 'save_category']);*/
             Route::post('save_product',[ProductController::class, 'store']);
+            Route::get('product_edit/{category}',[CategoryProduct::class, 'show']);
+            Route::post('product_edit/{category}',[CategoryProduct::class, 'update']);
+
 
             #Upload
             Route::post('upload', [UploadController::class, 'store']);
@@ -42,7 +45,7 @@ Route::get('/', function () {
     });
 
 
-    Route::get('/admin/home',[AdminController::class, 'adminlayout']);
+    //Route::get('/admin/home',[AdminController::class, 'adminlayout']);
 
     //Route::get('/admin/dashboard',[AdminController::class,'showdashboard']);
     //Route::post('/admin/adminlayout',[AdminController::class, 'log_in']);

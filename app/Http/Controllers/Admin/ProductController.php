@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 use App\Http\Requests\Product\CreateFormRequest;
@@ -33,7 +35,7 @@ class ProductController extends Controller
         return view('admin.product_list', [
             'title'=>'Danh sách sản phẩm',
             'products'=>$this->productService->getAll()
-        ]);  
+        ]);
     }
 
     /**
@@ -56,7 +58,8 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreateFormRequest $request){
-        dd($request->input());
+        $this->productService->insert($request);
+        return redirect()->back();
     }
 
     /**
@@ -65,9 +68,13 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Product $product)
     {
-        //
+        return view('admin.product_edit', [
+            'title'=>'Chỉnh sửa danh mục:  ' . $product->name,
+            'category'=>$product,
+            'categories'=>$this->productService->getAll()
+        ]);
     }
 
     /**
@@ -88,9 +95,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Product $product, CreateFormRequest $request){
+        $this->categoryService->update($request, $product);
+        return redirect('admin/product_list');
     }
 
     /**
@@ -99,8 +106,16 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Request $request): JsonResponse{
+        $result = $this->productService->destroy($request);
+        if($result){
+            return response()->json([
+                'error' => false,
+                'message' => 'Xóa thành công sản phẩm'
+            ]);
+        }
+        return response()->json([
+            'error' => true
+        ]);
     }
 }

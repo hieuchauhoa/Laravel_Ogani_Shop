@@ -10,15 +10,19 @@
         <div class="card-body">
             <div class="form-group">
                 <label for="name">Tên sản phẩm</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên sản phẩm">
+                <input type="text" class="form-control" value="{{ old('name') }}" id="name" name="name" placeholder="Nhập tên sản phẩm">
             </div>
             <div class="form-group">
-                <label for="price">Giá sản phẩm</label>
-                <input type="text" class="form-control" id="price" name="price" placeholder="Nhập giá sản phẩm">
+                <label for="price">Giá gốc</label>
+                <input type="number" class="form-control" value="{{ old('price') }}" id="price" name="price" placeholder="Nhập giá gốc của sản phẩm">
+            </div>
+            <div class="form-group">
+                <label for="price_sale">Giá giảm</label>
+                <input type="number" class="form-control" value="{{ old('price_sale') }}" id="price_sale" name="price_sale" placeholder="Nhập giá giảm của sản phẩm">
             </div>
             <div class="form-group">
                 <label for="packet">Phụ kiện</label>
-                <textarea class="form-control" id="packet" name="packet" placeholder="Nhập phụ kiện đi kèm"></textarea>
+                <textarea class="form-control" value="{{ old('packet') }}" id="packet" name="packet" placeholder="Nhập phụ kiện đi kèm"></textarea>
             </div>
             <div class="form-group">
                 <label for="cate_id">Danh mục</label>
@@ -30,11 +34,11 @@
             </div>
             <div class="form-group">
                 <label for="review">Mô tả sản phẩm</label>
-                <textarea class="form-control" style="resize: none" rows="5" id="review" name="review" placeholder="Nhập mô tả sản phẩm"></textarea>
+                <textarea class="form-control" id="review" name="review">{{ old('name') }}</textarea>
             </div>
             <div class="form-group">
                 <label for="upload">Hình ảnh sản phẩm</label>
-                <input type="file" class="form-control" id="upload" name="file">
+                <input type="file" class="form-control" id="upload">
                 <div id="image_show">
 
                 </div>
