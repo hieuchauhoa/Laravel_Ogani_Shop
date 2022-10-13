@@ -11,8 +11,8 @@ function removeRow(id, url){
             datatype: 'JSON',
             data: { id },
             url: url,
-            success: function(result){
-                if(result.error == false){
+            success: function (result) {
+                if(result.error === false){
                     alert(result.message);
                     location.reload();
                 } else {

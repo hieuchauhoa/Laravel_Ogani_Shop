@@ -18,7 +18,7 @@ class Helper{
                         <a class="btn btn-primary btn-sm" href="cate_edit/'.$category->id.'"><i class="fa fa-edit"></i></a>
                     </td>
                     <td>
-                        <a class="btn btn-danger btn-sm" href="" onclick="removeRow('.$category->id.', \'cate_destroy\')"><i class="fa fa-trash"></i></a>
+                        <a class="btn btn-danger btn-sm" href="" onclick="removeRow(' . $category->id . ', \'/cate_destroy\')"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>';
 

@@ -73,4 +73,29 @@ class ProductService
         }
         return true;
     }
+
+    public function update($product, $request){
+        $isValidPrice = $this->isValidPrice($request);
+        if (!$isValidPrice) return false;
+        //dd($request->all());
+        try {
+            $product->fill($request->input());
+            $product->save();
+            Session::flash('success', 'Câp nhật sản phẩm thành công');
+        } catch (\Exception $err){
+            Session::flash('error', 'Cập nhật sản phẩm thất bại !');
+            \Log::info($err->getMessage());
+            return false;
+        }
+        return true;
+    }
+
+    public function delete($request){
+        $product = Product::where('id', $request->input('id'))->first();
+        if($product){
+            $product->delete();
+            return true;
+        }
+        return false;
+    }
 }

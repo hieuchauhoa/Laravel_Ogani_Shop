@@ -26,10 +26,10 @@
                 <td>{!! \App\Helpers\Helper::active($product->active) !!}</td>
                 <td>{{$product->updated_at}}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="/product_edit/'.$product->id.'"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-primary btn-sm" href="product_edit/{{ $product->id }}"><i class="fa fa-edit"></i></a>
                 </td>
                 <td>
-                    <a class="btn btn-danger btn-sm" href="" onclick="removeRow({{$product->id}}, '/product_destroy')"><i class="fa fa-trash"></i></a>
+                    <a class="btn btn-danger btn-sm" href="" onclick="removeRow( {{$product->id }}, 'product_destroy')"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
             @endforeach

@@ -75,8 +75,8 @@ class ProductController extends Controller
         return view('admin.product_edit', [
             'title'=>'Chỉnh sửa sản phẩm:  ' . $product->name,
             'product'=>$product,
-            'products'=>$this->productService->getAll(),
-            'ur'=>''
+            'categories'=>$this->categoryService->getParent(),
+            'ur'=>'../'
         ]);
     }
 
@@ -99,8 +99,9 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Product $product, CreateFormRequest $request){
-        $this->categoryService->update($request, $product);
-        return redirect('admin/product_list');
+        $result = $this->productService->update($product, $request);
+        if($result) return redirect('admin/product_list');
+        return redirect()->back();
     }
 
     /**
@@ -110,7 +111,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(Request $request): JsonResponse{
-        $result = $this->productService->destroy($request);
+        $result = $this->productService->delete($request);
         if($result){
             return response()->json([
                 'error' => false,

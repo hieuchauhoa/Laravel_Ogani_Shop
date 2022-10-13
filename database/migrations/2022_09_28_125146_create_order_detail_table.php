@@ -14,11 +14,10 @@ class CreateOrderDetailTable extends Migration
     public function up()
     {
         Schema::create('order_detail', function (Blueprint $table) {
-            $table->id();
-            $table->integer('product_id');
-            $table->text('description');
-            $table->integer('quantity');
-            $table->integer('active');
+            table->id();
+            $table->foreignIdFor(\App\Models\Order::class, 'o_id')->constrained();
+            $table->foreignIdFor(\App\Models\Product::class, 'pro_id')->constrained();
+            $table->integer('qty')->default(1);
             $table->timestamps();
         });
     }

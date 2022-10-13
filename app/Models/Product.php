@@ -21,7 +21,8 @@ class Product extends Model
         'active'
     ];
 
-    //public function category(){
-        //$this->hasOne(Category::class, 'id', 'cate_id');
-    //}s
+    public function category(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Category::class, 'id', 'cate_id');
+    }
 }

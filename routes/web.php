@@ -37,13 +37,15 @@ Route::get('/cart', function () {
             Route::get('cate_edit/{category}',[CategoryProduct::class, 'show']);
             Route::post('cate_edit/{category}',[CategoryProduct::class, 'update']);
 
+
             #Product
             Route::get('product_add',[ProductController::class, 'create']);
             Route::get('product_list',[ProductController::class, 'index']);
             /*Route::post('/admin/save_product',[ProductController::class, 'save_category']);*/
             Route::post('save_product',[ProductController::class, 'store']);
-            Route::get('product_edit/{category}',[CategoryProduct::class, 'show']);
-            Route::post('product_edit/{category}',[CategoryProduct::class, 'update']);
+            Route::get('product_edit/{product}',[ProductController::class, 'show']);
+            Route::post('product_edit/{product}',[ProductController::class, 'update']);
+            Route::DELETE('product_destroy',[ProductController::class, 'destroy']);
 
 
             #Upload

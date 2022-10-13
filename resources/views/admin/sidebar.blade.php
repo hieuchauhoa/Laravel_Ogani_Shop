@@ -13,7 +13,16 @@
                 <img src="../{{$ur}}public/backend/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">Alexander Pierce</a>
+                <a href="#" class="d-block">
+                    <span class="username">
+                    <?php
+                    $username = Session::get('admin_name');
+                    if($username){
+                        echo $username;
+                    }
+                    ?>
+                </span>
+                </a>
             </div>
         </div>
 
