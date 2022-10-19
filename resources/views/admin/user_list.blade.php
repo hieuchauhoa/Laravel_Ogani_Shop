@@ -18,34 +18,32 @@
         <tr>
             <th>ID</th>
             <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Price sale</th>
+            <th>Email</th>
             <th>Active</th>
+            <th>Level</th>
             <th>Update</th>
             <th style="width:20px;"></th>
             <th style="width:20px;"></th>
         </tr>
         </thead>
         <tbody>
-            @foreach($products as $key => $product)
+        @foreach($users as $key => $user)
             <tr>
-                <td>{{$product->id}}</td>
-                <td>{{$product->name}}</td>
-                <td>{{$product->category->name}}</td>
-                <td>{{$product->price}}</td>
-                <td>{{$product->price_sale}}</td>
-                <td>{!! \App\Helpers\Helper::active($product->active) !!}</td>
-                <td>{{$product->updated_at}}</td>
+                <td>{{$user->id}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                <td>{!! \App\Helpers\Helper::active($user->status) !!}</td>
+                <td>{!! \App\Helpers\Helper::level($user->level) !!}</td>
+                <td>{{$user->updated_at}}</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="product_edit/{{ $product->id }}"><i class="fa fa-edit"></i></a>
+                    <a class="btn btn-primary btn-sm" href="user_edit/{{ $user->id }}"><i class="fa fa-edit"></i></a>
                 </td>
                 <td>
-                    <a class="btn btn-danger btn-sm" href="" onclick="removeRow( {{$product->id }}, 'product_destroy')"><i class="fa fa-trash"></i></a>
+                    <a class="btn btn-danger btn-sm" href="" onclick="removeRow( {{$user->id }}, 'user_destroy')"><i class="fa fa-trash"></i></a>
                 </td>
             </tr>
-            @endforeach
+        @endforeach
         </tbody>
     </table>
-    {{ $products->links() }}
+    {{ $users->links() }}
 @endsection

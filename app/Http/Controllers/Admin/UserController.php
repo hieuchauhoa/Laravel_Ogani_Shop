@@ -3,27 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Models\Product;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 
-use App\Http\Requests\Product\CreateFormRequest;
-use App\Http\Services\Category\CategoryService;
-use App\Http\Services\Product\ProductService;
+//use App\Http\Requests\User\CreateFormRequest;
+use App\Http\Services\User\UserService;
 use DB;
 use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\Redirect;
 session_start();
 
-class ProductController extends Controller
-{
-    protected $categoryService;
-    protected $productService;
 
-    public function __construct(CategoryService $categoryService, ProductService $productService){
-        $this->categoryService = $categoryService;
-        $this->productService = $productService;
+class UserController extends Controller
+{
+    protected $userService;
+
+    public function __construct(UserService $userService){
+        $this->userService = $userService;
     }
     /**
      * Display a listing of the resource.
@@ -32,9 +31,9 @@ class ProductController extends Controller
      */
     public function index()
     {
-        return view('admin.product_list', [
-            'title'=>'Danh sách sản phẩm: '. $this->productService->count(),
-            'products'=>$this->productService->get(),
+        return view('admin.user_list', [
+            'title'=>'Danh sách tài khoản người dùng: '. $this->userService->count(),
+            'users'=>$this->userService->get(),
             'ur'=>''
         ]);
     }
@@ -46,11 +45,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('admin.product_add', [
-            'title'=>'Thêm sản phẩm',
-            'categories'=>$this->categoryService->getParent(),
-            'ur'=>''
-        ]);
     }
 
     /**
@@ -60,7 +54,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(CreateFormRequest $request){
-        $this->productService->insert($request);
+        $this->userService->insert($request);
         return redirect()->back();
     }
 
@@ -70,12 +64,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Product $product)
+    public function show(User $user)
     {
-        return view('admin.product_edit', [
-            'title'=>'Chỉnh sửa sản phẩm:  ' . $product->name,
-            'product'=>$product,
-            'categories'=>$this->categoryService->getParent(),
+        return view('admin.user_edit', [
+            'title'=>'Chỉnh sửa tài khoản:  ' . $user->name,
+            'user'=>$user,
             'ur'=>'../'
         ]);
     }
@@ -98,9 +91,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Product $product, CreateFormRequest $request){
-        $result = $this->productService->update($product, $request);
-        if($result) return redirect('admin/product_list');
+    public function update(User $user, CreateFormRequest $request){
+        $result = $this->userService->update($user, $request);
+        if($result) return redirect('admin/user_list');
         return redirect()->back();
     }
 
@@ -115,7 +108,7 @@ class ProductController extends Controller
         if($result){
             return response()->json([
                 'error' => false,
-                'message' => 'Xóa thành công sản phẩm'
+                'message' => 'Xóa thành công tài khoản'
             ]);
         }
         return response()->json([

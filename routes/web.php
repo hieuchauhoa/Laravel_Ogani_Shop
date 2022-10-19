@@ -6,7 +6,9 @@ use \App\Http\Controllers\Admin\MainController;
 use \App\Http\Controllers\AdminController;
 use \App\Http\Controllers\Admin\CategoryProduct;
 use \App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\UploadController;
+use \App\Http\Controllers\Admin\UploadController;
+use \App\Http\Controllers\Admin\OrderController;
+use \App\Http\Controllers\Admin\UserController;
 
 
 Route::get('/', function () {
@@ -50,6 +52,20 @@ Route::get('/cart', function () {
 
             #Upload
             Route::post('upload', [UploadController::class, 'store']);
+
+            #Order
+            Route::get('order_list',[OrderController::class, 'index']);
+            /*Route::post('/admin/save_product',[ProductController::class, 'save_category']);*/
+            Route::get('order_cancel',[OrderController::class, 'index']);
+            Route::get('order_detail/{order}',[OrderController::class, 'show']);
+
+            #User
+            Route::get('user_add',[UserController::class, 'create']);
+            Route::get('user_list',[UserController::class, 'index']);
+            Route::post('save_user',[UserController::class, 'store']);
+            Route::get('user_edit/{user}',[UserController::class, 'show']);
+            Route::post('user_edit/{user}',[UserController::class, 'update']);
+            Route::DELETE('user_destroy',[UserController::class, 'destroy']);
 
         });
     });
