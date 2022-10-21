@@ -67,6 +67,13 @@ Route::get('/cart', function () {
             Route::post('user_edit/{user}',[UserController::class, 'update']);
             Route::DELETE('user_destroy',[UserController::class, 'destroy']);
 
+            #Slider
+            Route::get('slider_add',[UserController::class, 'create']);
+            Route::get('slider_list',[UserController::class, 'index']);
+            Route::post('save_slider',[UserController::class, 'store']);
+            Route::get('slider_edit/{slider}',[UserController::class, 'show']);
+            Route::post('slider_edit/{slider}',[UserController::class, 'update']);
+            Route::DELETE('slider_destroy',[UserController::class, 'destroy']);
         });
     });
 

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateOrderDetailTable extends Migration
+class CreateSlidersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateOrderDetailTable extends Migration
      */
     public function up()
     {
-        Schema::create('order_detail', function (Blueprint $table) {
+        Schema::create('sliders', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\Order::class, 'o_id')->constrained();
-            $table->foreignIdFor(\App\Models\Product::class, 'pro_id')->constrained();
-            $table->integer('qty')->default(1);
+            $table->string('name', 255);
+            $table->string('url', 255)->nullable();
+            $table->string('thumb', 255);
+            $table->integer('sort_by');
+            $table->integer('active');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateOrderDetailTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('order_detail');
+        Schema::dropIfExists('sliders');
     }
 }

@@ -5,6 +5,9 @@
 @endsection
 
 @section('content')
+    <div class="card-header">
+        <h3 class="card-title">{{$title}}</h3>
+    </div>
     <form action="save_product" method="post">
         @csrf
         <div class="card-body">

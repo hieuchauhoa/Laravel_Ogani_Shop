@@ -1,32 +1,36 @@
 @extends('admin.main')
 
-@section('head')
-    <script src="../public/ckeditor/ckeditor.js"></script>
-@endsection
-
 @section('content')
     <div class="card-header">
         <h3 class="card-title">{{$title}}</h3>
     </div>
-    <form action="save_category" method="post">
+    <form action="save_slider" method="post">
         @csrf
         <div class="card-body">
             <div class="form-group">
-                <label for="name">Tên danh mục</label>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Nhập tên danh mục">
+                <label for="title">Tiêu đề</label>
+                <input type="text" class="form-control" value="{{ old('title') }}" id="title" name="title" placeholder="Nhập tiêu đề">
             </div>
             <div class="form-group">
-                <label for="parent_id">Danh mục cha</label>
-                <select name="parent_id" id="parent_id" class="form-control">
-                    <option value="0">Không có</option>
-                    @foreach($categories as $cate)
-                        <option value="{{$cate->id}}">{{$cate->name}}</option>
+                <label for="">Thông tin</label>
+                <textarea class="form-control" value="{{ old('full') }}" id="full" name="full" placeholder="Nhập thông tin"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cate_id">Danh mục</label>
+                <select name="cate_id" id="cate_id" class="form-control">
+                    @foreach($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
                     @endforeach
                 </select>
             </div>
             <div class="form-group">
-                <label for="description">Mô tả</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Mô tả danh mục"></textarea>
+                <label for="upload">Hình ảnh sản phẩm</label>
+                <input type="file" class="form-control" id="upload">
+                <div id="image_show">
+
+                </div>
+                <input type="hidden" name="file" id="file">
+
             </div>
             <div class="form-group">
                 <label>Kích hoạt</label>
@@ -40,15 +44,9 @@
                 </div>
             </div>
         </div>
-        <!-- /.card-body -->
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Thêm</button>
+            <button type="submit" class="btn btn-primary">Thêm slider</button>
         </div>
     </form>
 @endsection
 
-@section('footer')
-    <script>
-        CKEDITOR.replace( 'description' );
-    </script>
-@endsection

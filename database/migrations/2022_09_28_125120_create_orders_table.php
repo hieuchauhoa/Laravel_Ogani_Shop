@@ -14,7 +14,7 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            table->id();
+            $table->id();
             $table->foreignIdFor(\App\Models\User::class, 'c_id')->constrained()->cascadeOnDelete();
             $table->integer('qty')->default(1);
             $table->float('total');
