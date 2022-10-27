@@ -18,8 +18,8 @@ class OrderDetail extends Model
         return $this->belongsTo(Order::class);
     }
 
-    public function sku(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function product(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->belongsTo(Product::class);
+        return $this->hasOne(Product::class, 'id', 'pro_id');
     }
 }

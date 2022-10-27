@@ -64,7 +64,7 @@ class OrderController extends Controller
     {
         return view('admin.order_detail', [
             'title'=>'Chi tiết hóa đơn:  ' . $order->id,
-            'order_details'=>$this->orderDetailService->get($order),
+            'order_details'=>$this->orderDetailService->get($order->id),
             'ur'=>'../'
         ]);
     }

@@ -59,6 +59,50 @@
                     <label for="no_active" class="custom-control-label">Không</label>
                 </div>
             </div>
+            <div class="form-group">
+                        <label for="cpu">CPU</label>
+                        <input type="text" class="form-control" value="{{ old('cpu') }}" id="cpu" name="cpu" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="ram">RAM</label>
+                        <input type="text" class="form-control" value="{{ old('ram') }}" id="ram" name="ram" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="screen">Màn hình</label>
+                        <input type="text" class="form-control" value="{{ old('screen') }}" id="screen" name="screen" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="storage">Bộ nhớ</label>
+                        <input type="text" class="form-control" value="{{ old('storage') }}" id="storage" name="storage" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="exten_memmory">Bộ nhớ mở rộng</label>
+                        <input type="text" class="form-control" value="{{ old('exten_memmory') }}" id="exten_memmory" name="exten_memmory" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="cam1">Camera trước</label>
+                        <input type="text" class="form-control" value="{{ old('cam1') }}" id="cam1" name="cam1" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="cam2">Camera sau</label>
+                        <input type="text" class="form-control" value="{{ old('cam2') }}" id="cam2" name="cam2" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="sim">Sim</label>
+                        <input type="text" class="form-control" value="{{ old('sim') }}" id="sim" name="sim" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="connect">Kết nối mạng</label>
+                        <input type="text" class="form-control" value="{{ old('connect') }}" id="connect" name="connect" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="pin">Dung lượng pin</label>
+                        <input type="text" class="form-control" value="{{ old('pin') }}" id="pin" name="pin" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="os">Hệ điều hành</label>
+                        <input type="text" class="form-control" value="{{ old('os') }}" id="os" name="os" placeholder="">
+                    </div>
         </div>
         <div class="card-footer">
             <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>

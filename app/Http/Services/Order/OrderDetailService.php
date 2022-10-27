@@ -9,6 +9,6 @@ use Illuminate\Support\Str;
 class OrderDetailService
 {
     public function get($request){
-        return OrderDetail::where('o_id', $request->id);
+        return OrderDetail::with('product')->where('o_id', $request)->get();;
     }
 }

@@ -19,13 +19,13 @@ class Order extends Model
         'address',
         'phone'
     ];
-    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
+    public function user(): \Illuminate\Database\Eloquent\Relations\HasOne
     {
-        return $this->belongsTo(User::class);
+        return $this->hasOne(User::class, 'id', 'c_id');
     }
 
     public function orderItems(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
-        return $this->hasMany(OrderDetail::class);
+        return $this->hasMany(OrderDetail::class, 'id', 'id');
     }
 }

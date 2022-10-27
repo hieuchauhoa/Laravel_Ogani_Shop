@@ -2,6 +2,7 @@
 
 namespace App\Http\Services\Product;
 use App\Models\Product;
+use App\Models\ProductDetail;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
 
@@ -65,6 +66,25 @@ class ProductService
                 'active' => (string) $request->input('active'),
                 'slug' => Str::slug($request->input('name'), '-')
             ]);
+
+            $id = Product::where('name', $request->input('name'))->first()->id;
+
+            ProductDetail::create([
+                'cpu' => (string) $request->input('cpu'),
+                'ram' => (string) $request->input('ram'),
+                'screen' => (string) $request->input('screen'),
+                'storage' => (string) $request->input('storage'),
+                'exten_memmory' => (string) $request->input('exten_memmory'),
+                'cam1' => (string) $request->input('cam1'),
+                'cam2' => (string) $request->input('cam2'),
+                'sim' => (string) $request->input('sim'),
+                'connect' => (string) $request->input('connect'),
+                'pin' => (string) $request->input('pin'),
+                'os' => (string) $request->input('os'),
+                'note' => (string) $request->input('review'),
+                'pro_id' => (int) $id
+            ]);
+
             Session::flash('success', 'Tạo sản phẩm thành công');
         } catch (\Exception $err){
             Session::flash('error', 'Thêm sản phẩm lỗi !');
@@ -92,8 +112,10 @@ class ProductService
 
     public function delete($request){
         $product = Product::where('id', $request->input('id'))->first();
-        if($product){
+        $productdetail = ProductDetail::where('pro_id', $request->input('id'))->get();
+        if($product && $productdetail){
             $product->delete();
+            $productdetail->delete();
             return true;
         }
         return false;
