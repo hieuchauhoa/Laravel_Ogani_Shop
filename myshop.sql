@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 19, 2022 lúc 08:02 AM
--- Phiên bản máy phục vụ: 10.4.21-MariaDB
--- Phiên bản PHP: 7.4.23
+-- Thời gian đã tạo: Th10 28, 2022 lúc 03:52 PM
+-- Phiên bản máy phục vụ: 10.4.25-MariaDB
+-- Phiên bản PHP: 8.0.23
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -266,10 +266,10 @@ INSERT INTO `orders` (`id`, `c_id`, `qty`, `sub_total`, `total`, `status`, `type
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `order_detail`
+-- Cấu trúc bảng cho bảng `order_details`
 --
 
-CREATE TABLE `order_detail` (
+CREATE TABLE `order_details` (
   `id` int(10) UNSIGNED NOT NULL,
   `pro_id` int(10) UNSIGNED NOT NULL,
   `qty` int(11) NOT NULL,
@@ -279,10 +279,10 @@ CREATE TABLE `order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `order_detail`
+-- Đang đổ dữ liệu cho bảng `order_details`
 --
 
-INSERT INTO `order_detail` (`id`, `pro_id`, `qty`, `o_id`, `created_at`, `updated_at`) VALUES
+INSERT INTO `order_details` (`id`, `pro_id`, `qty`, `o_id`, `created_at`, `updated_at`) VALUES
 (1, 26, 1, 1, '2016-12-01 19:52:14', '2016-12-01 19:52:14'),
 (2, 24, 1, 1, '2016-12-01 19:52:14', '2016-12-01 19:52:14'),
 (3, 26, 1, 2, '2016-12-01 19:55:27', '2016-12-01 19:55:27'),
@@ -338,7 +338,7 @@ CREATE TABLE `products` (
   `r_intro` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `review` text COLLATE utf8_unicode_ci NOT NULL,
   `tag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `price` float NOT NULL,
+  `price` int(11) NOT NULL,
   `active` int(11) NOT NULL DEFAULT 1,
   `cate_id` int(10) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -395,15 +395,14 @@ INSERT INTO `products` (`id`, `name`, `slug`, `intro`, `promo1`, `promo2`, `prom
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `pro_details`
+-- Cấu trúc bảng cho bảng `product_details`
 --
 
-CREATE TABLE `pro_details` (
+CREATE TABLE `product_details` (
   `id` int(10) UNSIGNED NOT NULL,
   `cpu` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `ram` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `screen` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `vga` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `storage` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `exten_memmory` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `cam1` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
@@ -419,47 +418,47 @@ CREATE TABLE `pro_details` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `pro_details`
+-- Đang đổ dữ liệu cho bảng `product_details`
 --
 
-INSERT INTO `pro_details` (`id`, `cpu`, `ram`, `screen`, `vga`, `storage`, `exten_memmory`, `cam1`, `cam2`, `sim`, `connect`, `pin`, `os`, `note`, `pro_id`, `created_at`, `updated_at`) VALUES
-(9, 'Exynos 8890, 8 Nhân', '4G', '5.1 inch (1440 x 2560 pixels)', 'Mali-T880 MP12', '32 GB', 'MicroSD (T-Flash)', '12MP', '5 MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3000mAh', 'Andoid 6.0', '', 22, '2016-11-24 09:39:13', '2016-11-28 18:02:19'),
-(10, 'Exynos 8890, 8 Nhân', '4G', '5.1 inch (1440 x 2560 pixels)', 'Mali-T880 MP12', '32 GB', 'MicroSD (T-Flash)', '12MP', '5 MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3000mAh', 'Andoid 6.0', '', 23, '2016-11-24 09:39:28', '2016-11-24 09:39:28'),
-(11, 'Apple A10', '3G', '5.5 inch (1920 x 1080 pixels)', 'chip apple 6 nhân', '256 G', 'không', 'dual 12 MP', '7MP', '1 Sim Nano', 'Wi-Fi 802.11 a/b/g/n/ac, Linning', '2890mAh', 'IOS 10.0', '', 24, '2016-11-24 18:48:39', '2016-12-01 20:52:21'),
-(12, 'Apple A10', '3G', '5.5 inch (1920 x 1080 pixels)', 'chip apple 6 nhân', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Nano', 'Wi-Fi 802.11 a/b/g/n/ac, Linning', '2890mAh', 'IOS 10.0', '', 25, '2016-11-24 18:48:46', '2016-12-01 20:53:36'),
-(13, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', 'adreno900', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 26, '2016-11-25 23:44:07', '2016-11-28 23:01:37'),
-(14, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', 'adreno900', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 27, '2016-11-25 23:44:11', '2016-11-28 23:01:52'),
-(15, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', 'adreno900', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 28, '2016-11-25 23:44:15', '2016-11-28 23:02:04'),
-(21, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', 'adreno900', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 34, '2016-11-25 23:45:03', '2016-11-28 23:03:32'),
-(22, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', 'adreno900', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 35, '2016-11-25 23:45:08', '2016-11-28 23:04:05'),
-(23, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'Intel® HD Graphics, Share (Dùng chung bộ nhớ với RAM)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 36, '2016-11-26 00:43:40', '2016-11-26 00:43:40'),
-(24, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'Intel® HD Graphics, Share (Dùng chung bộ nhớ với RAM)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 37, '2016-11-26 00:43:47', '2016-11-26 00:43:47'),
-(25, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'Intel® HD Graphics, Share (Dùng chung bộ nhớ với RAM)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 38, '2016-11-26 00:43:51', '2016-11-26 00:43:51'),
-(26, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'Intel® HD Graphics, Share (Dùng chung bộ nhớ với RAM)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 39, '2016-11-26 00:43:55', '2016-11-26 00:43:55'),
-(27, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'Intel® HD Graphics, Share (Dùng chung bộ nhớ với RAM)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 40, '2016-11-26 00:43:58', '2016-11-26 00:43:58'),
-(28, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'Intel® HD Graphics, Share (Dùng chung bộ nhớ với RAM)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 41, '2016-11-26 00:44:02', '2016-11-26 00:44:02'),
-(29, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 42, '2016-11-26 02:13:19', '2016-11-26 02:13:19'),
-(30, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 43, '2016-11-26 02:13:24', '2016-11-26 02:13:24'),
-(31, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'Case thường', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 44, '2016-11-26 02:13:27', '2016-11-26 02:13:27'),
-(32, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 45, '2016-11-26 02:13:31', '2016-11-26 02:13:31'),
-(33, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 46, '2016-11-26 02:13:35', '2016-11-26 02:13:35'),
-(34, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 47, '2016-11-26 02:13:53', '2016-11-26 02:13:53'),
-(35, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 48, '2016-11-26 02:13:55', '2016-11-26 02:13:55'),
-(36, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 49, '2016-11-26 02:14:00', '2016-11-26 02:14:00'),
-(37, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', 'Intel® HD Graphics', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 50, '2016-11-26 02:14:03', '2016-11-26 02:14:03'),
-(38, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 51, '2016-11-26 02:18:03', '2016-11-26 02:18:03'),
-(39, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 52, '2016-11-26 02:18:08', '2016-11-26 02:18:08'),
-(40, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 53, '2016-11-26 02:18:11', '2016-11-26 02:18:11'),
-(41, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 54, '2016-11-26 02:18:14', '2016-11-26 02:18:14'),
-(42, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 55, '2016-11-26 02:18:17', '2016-11-26 02:18:17'),
-(43, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 56, '2016-11-26 02:18:34', '2016-11-26 02:18:34'),
-(44, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 57, '2016-11-26 02:19:12', '2016-11-26 02:19:12'),
-(45, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 58, '2016-11-26 02:19:16', '2016-11-26 02:19:16'),
-(46, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 59, '2016-11-26 02:19:19', '2016-11-26 02:19:19'),
-(47, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 60, '2016-11-26 02:20:26', '2016-11-26 02:20:26'),
-(48, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 61, '2016-11-26 02:20:32', '2016-11-26 02:20:32'),
-(49, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 62, '2016-11-26 02:20:35', '2016-11-26 02:20:35'),
-(50, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', 'GTX 950M 4G GDDR4', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 63, '2016-11-26 02:20:38', '2016-11-26 02:20:38');
+INSERT INTO `product_details` (`id`, `cpu`, `ram`, `screen`, `storage`, `exten_memmory`, `cam1`, `cam2`, `sim`, `connect`, `pin`, `os`, `note`, `pro_id`, `created_at`, `updated_at`) VALUES
+(9, 'Exynos 8890, 8 Nhân', '4G', '5.1 inch (1440 x 2560 pixels)', '32 GB', 'MicroSD (T-Flash)', '12MP', '5 MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3000mAh', 'Andoid 6.0', '', 22, '2016-11-24 09:39:13', '2016-11-28 18:02:19'),
+(10, 'Exynos 8890, 8 Nhân', '4G', '5.1 inch (1440 x 2560 pixels)', '32 GB', 'MicroSD (T-Flash)', '12MP', '5 MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3000mAh', 'Andoid 6.0', '', 23, '2016-11-24 09:39:28', '2016-11-24 09:39:28'),
+(11, 'Apple A10', '3G', '5.5 inch (1920 x 1080 pixels)', '256 G', 'không', 'dual 12 MP', '7MP', '1 Sim Nano', 'Wi-Fi 802.11 a/b/g/n/ac, Linning', '2890mAh', 'IOS 10.0', '', 24, '2016-11-24 18:48:39', '2016-12-01 20:52:21'),
+(12, 'Apple A10', '3G', '5.5 inch (1920 x 1080 pixels)', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Nano', 'Wi-Fi 802.11 a/b/g/n/ac, Linning', '2890mAh', 'IOS 10.0', '', 25, '2016-11-24 18:48:46', '2016-12-01 20:53:36'),
+(13, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 26, '2016-11-25 23:44:07', '2016-11-28 23:01:37'),
+(14, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 27, '2016-11-25 23:44:11', '2016-11-28 23:01:52'),
+(15, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 28, '2016-11-25 23:44:15', '2016-11-28 23:02:04'),
+(21, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 34, '2016-11-25 23:45:03', '2016-11-28 23:03:32'),
+(22, 'snapdragon 821 2.5 Ghz', '6G', '5.1 inch (1440 x 2560 pixels)', '128 G', 'không', 'dual 12 MP', '7MP', '1 Sim Micro', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '3500mAh', 'Andoid 7.0', '', 35, '2016-11-25 23:45:08', '2016-11-28 23:04:05'),
+(23, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 36, '2016-11-26 00:43:40', '2016-11-26 00:43:40'),
+(24, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 37, '2016-11-26 00:43:47', '2016-11-26 00:43:47'),
+(25, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 38, '2016-11-26 00:43:51', '2016-11-26 00:43:51'),
+(26, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 39, '2016-11-26 00:43:55', '2016-11-26 00:43:55'),
+(27, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 40, '2016-11-26 00:43:58', '2016-11-26 00:43:58'),
+(28, 'Intel, Celeron, N3050, 1.60 GHz', '	DDR3L (1 khe RAM), 2 GB, 1600 MHz', '15.6 inch, HD (1366 x 768 pixels)', 'HDD, 500 GB', 'có', '0.9 MP(16:9)', '', 'không', '802.11b/g/n, Bluetooth v4.0', 'Li-Ion 4 cell', 'Windows 10 bản dùng thử', '', 41, '2016-11-26 00:44:02', '2016-11-26 00:44:02'),
+(29, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 42, '2016-11-26 02:13:19', '2016-11-26 02:13:19'),
+(30, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 43, '2016-11-26 02:13:24', '2016-11-26 02:13:24'),
+(31, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'Case thường', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 44, '2016-11-26 02:13:27', '2016-11-26 02:13:27'),
+(32, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 45, '2016-11-26 02:13:31', '2016-11-26 02:13:31'),
+(33, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 46, '2016-11-26 02:13:35', '2016-11-26 02:13:35'),
+(34, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 47, '2016-11-26 02:13:53', '2016-11-26 02:13:53'),
+(35, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 48, '2016-11-26 02:13:55', '2016-11-26 02:13:55'),
+(36, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 49, '2016-11-26 02:14:00', '2016-11-26 02:14:00'),
+(37, 'Core i5 650 3.2 Ghz/ Cache 4M/ 2.5 GT/s ', 'DDRam3 Dual Channel 4GB bus 1333 (2GB x 2)', 'Gigabyte H81-DS2', '250GB SATA 7200 rpm ', 'không', 'Intel FAN Chuẩn', 'CTS 350W', '', 'USB, VGA, COM, Display Port ', '', 'Cài sẵn Windows 7 bản quyền', 'Dây nguồn, Ốc ..', 50, '2016-11-26 02:14:03', '2016-11-26 02:14:03'),
+(38, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 51, '2016-11-26 02:18:03', '2016-11-26 02:18:03'),
+(39, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 52, '2016-11-26 02:18:08', '2016-11-26 02:18:08'),
+(40, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 53, '2016-11-26 02:18:11', '2016-11-26 02:18:11'),
+(41, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 54, '2016-11-26 02:18:14', '2016-11-26 02:18:14'),
+(42, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 55, '2016-11-26 02:18:17', '2016-11-26 02:18:17'),
+(43, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 56, '2016-11-26 02:18:34', '2016-11-26 02:18:34'),
+(44, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 57, '2016-11-26 02:19:12', '2016-11-26 02:19:12'),
+(45, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 58, '2016-11-26 02:19:16', '2016-11-26 02:19:16'),
+(46, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 59, '2016-11-26 02:19:19', '2016-11-26 02:19:19'),
+(47, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 60, '2016-11-26 02:20:26', '2016-11-26 02:20:26'),
+(48, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 61, '2016-11-26 02:20:32', '2016-11-26 02:20:32'),
+(49, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 62, '2016-11-26 02:20:35', '2016-11-26 02:20:35'),
+(50, 'Intel cỏe I5 6300HQ', '8G DDR4 2100', 'Gigabyte H81-DS2', '1T HDD, 128G SSD', '', 'Intel FAN Chuẩn', 'CTS 350W', '', 'Wi-Fi 802.11 a/b/g/n/ac, dual-band, DLNA, Wi-Fi Direct, Wi-Fi hotspot', '4Cel', 'Windows 10 bản dùng thử', 'Dây nguồn, Ốc ..', 63, '2016-11-26 02:20:38', '2016-11-26 02:20:38');
 
 -- --------------------------------------------------------
 
@@ -538,9 +537,9 @@ ALTER TABLE `orders`
   ADD KEY `oders_c_id_foreign` (`c_id`);
 
 --
--- Chỉ mục cho bảng `order_detail`
+-- Chỉ mục cho bảng `order_details`
 --
-ALTER TABLE `order_detail`
+ALTER TABLE `order_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `oders_detail_pro_id_foreign` (`pro_id`),
   ADD KEY `oders_detail_o_id_foreign` (`o_id`);
@@ -560,9 +559,9 @@ ALTER TABLE `products`
   ADD KEY `products_cat_id_foreign` (`cate_id`);
 
 --
--- Chỉ mục cho bảng `pro_details`
+-- Chỉ mục cho bảng `product_details`
 --
-ALTER TABLE `pro_details`
+ALTER TABLE `product_details`
   ADD PRIMARY KEY (`id`),
   ADD KEY `pro_details_pro_id_foreign` (`pro_id`);
 
@@ -614,22 +613,22 @@ ALTER TABLE `orders`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT cho bảng `order_detail`
+-- AUTO_INCREMENT cho bảng `order_details`
 --
-ALTER TABLE `order_detail`
+ALTER TABLE `order_details`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT cho bảng `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
 
 --
--- AUTO_INCREMENT cho bảng `pro_details`
+-- AUTO_INCREMENT cho bảng `product_details`
 --
-ALTER TABLE `pro_details`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+ALTER TABLE `product_details`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
@@ -667,9 +666,9 @@ ALTER TABLE `orders`
   ADD CONSTRAINT `oders_c_id_foreign` FOREIGN KEY (`c_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `order_detail`
+-- Các ràng buộc cho bảng `order_details`
 --
-ALTER TABLE `order_detail`
+ALTER TABLE `order_details`
   ADD CONSTRAINT `oders_detail_o_id_foreign` FOREIGN KEY (`o_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `oders_detail_pro_id_foreign` FOREIGN KEY (`pro_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 
@@ -680,9 +679,9 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_cat_id_foreign` FOREIGN KEY (`cate_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE;
 
 --
--- Các ràng buộc cho bảng `pro_details`
+-- Các ràng buộc cho bảng `product_details`
 --
-ALTER TABLE `pro_details`
+ALTER TABLE `product_details`
   ADD CONSTRAINT `pro_details_pro_id_foreign` FOREIGN KEY (`pro_id`) REFERENCES `products` (`id`) ON DELETE CASCADE;
 COMMIT;
 

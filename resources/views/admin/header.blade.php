@@ -12,6 +12,14 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="../{{$ur}}public/backend/dist/css/adminlte.min.css">
 
+
+
+ 
+  <link rel="stylesheet" href="../{{$ur}}public/backend/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+  <link rel="stylesheet" href="../{{$ur}}public/backend/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+  <link rel="stylesheet" href="../{{$ur}}public/backend/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+  <!-- Theme style -->
+
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
 @yield('head')

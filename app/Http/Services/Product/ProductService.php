@@ -31,7 +31,7 @@ class ProductService
 
     public function get()
     {
-        return Product::with('category')->orderbyDesc('id', 0)->cursorPaginate(15);
+        return Product::with('category')->orderbyDesc('id', 0)->cursorPaginate(1000);
         //return Product::orderbyDesc('id', '>', 100)->cursorPaginate(15);
     }
 

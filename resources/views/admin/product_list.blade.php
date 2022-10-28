@@ -1,55 +1,12 @@
 @extends('admin.main')
 
 @section('content')
-    <div class="container-fluid mt-3">
-        <form action="enhanced-results.html">
-            <div class="row">
-                <div class="col-md-12 ml-3 mr-3">
-                    <div class="row">
-                        <div class="col-4">
-                            <div class="input-group input-group-sm">
-                                <input type="search" class="form-control form-control-sidebar" placeholder="Nhập tên sản phẩm cần tìm.." name="search">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-lg btn-default">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-2"></div>
-                        <div class="col-2">
-                            <div class="form-group">
-                                <select class="select2" style="width: 100%;">
-                                    <option selected>Sort Order</option>
-                                    <option>DESC</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-2">
-                            <div class="form-group">
-                                <select class="select2" style="width: 100%;">
-                                    <option selected>Order By</option>
-                                    <option>Date</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-1">
-                            <div class="form-group">
-                                <select class="select2" style="width: 100%;">
-                                    <option selected>Export</option>
-                                    <option>Date</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </div>
+
     <div class="card-header mt-2">
         <h3 class="card-title">{{$title}}</h3>
     </div>
-    <table class="table">
+    <div class="card-body">
+    <table id="example1" class="table table-bordered table-striped">
         <thead>
         <tr>
             <th>ID</th>
@@ -83,5 +40,6 @@
             @endforeach
         </tbody>
     </table>
-    {{ $products->links() }}
+    </div>
+    <!--{{ $products->links() }}-->
 @endsection
