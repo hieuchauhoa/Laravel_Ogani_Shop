@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 #FE
 Route::get('product',[ProductController::class,'index'])->name('product');
+Route::get('product/{id}',[ProductController::class,'detail'])->name('detail');
 Route::get('category',[CategoryController::class,'index'])->name('category');

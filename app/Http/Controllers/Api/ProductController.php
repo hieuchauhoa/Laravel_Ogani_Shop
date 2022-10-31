@@ -18,7 +18,22 @@ class ProductController extends Controller
         $prod =Product::all();
         return response($prod);
     }
-
+    public function detail($id)
+    {
+        $prod =Product::find($id);
+        if($prod){
+            return response()->json([
+                'data' => $prod,
+                'status_code' => 200,
+                'message' => 'ok'
+            ]);
+        }
+        return response()->json([
+            'data' => null,
+            'status_code' => 404,
+            'message' => 'Data Not Found'
+        ]);
+    }
     /**
      * Show the form for creating a new resource.
      *
