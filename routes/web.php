@@ -9,18 +9,14 @@ use \App\Http\Controllers\Admin\ProductController;
 use \App\Http\Controllers\Admin\UploadController;
 use \App\Http\Controllers\Admin\OrderController;
 use \App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\FrontEndController;
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/home', function () {
-    return view('welcome');
-});
-Route::get('/cart', function () {
-    return view('cart');
-});
+#FE
+Route::get('/',[FrontEndController::class,'index'])->name('index');
+Route::get('/cart',[FrontEndController::class,'cart'])->name('cart');
+Route::get('/product',[FrontEndController::class,'product'])->name('product');
+Route::get('/product-detail',[FrontEndController::class,'product_detail'])->name('product-detail');
 
     ##Admin
     Route::get('/admin/login',[LoginController::class,'index'])->name('login');
