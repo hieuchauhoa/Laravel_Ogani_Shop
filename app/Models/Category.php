@@ -16,4 +16,10 @@ class Category extends Model
         'slug',
         'active'
     ];
+
+    protected $cate = [
+        'id',
+        'name',
+        'active'
+    ];
 }
