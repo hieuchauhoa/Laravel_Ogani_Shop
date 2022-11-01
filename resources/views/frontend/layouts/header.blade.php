@@ -26,8 +26,7 @@
             <ul>
                 <li class="active"><a href="{{ route('index') }}">Home</a></li>
                 <li><a href="{{ route('product') }}">Shop</a></li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                <li><a href="{{ route('contact') }}">Contact</a></li>
             </ul>
         </nav>
         <div id="mobile-menu-wrap"></div>
@@ -88,8 +87,7 @@
                         <ul>
                             <li class="active"><a href="{{ route('index') }}">Home</a></li>
                             <li><a href="{{ route('product') }}">Shop</a></li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
                         </ul>
                     </nav>
                 </div>
