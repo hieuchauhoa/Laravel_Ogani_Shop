@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="app" ng-controller="AppController">
 <head>
     @include('FrontEnd.layouts.head')
 </head>

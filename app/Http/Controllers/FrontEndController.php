@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class FrontEndController extends Controller
 {
     public function index(){
-        return view('FrontEnd.index');
+        return view('FrontEnd.pages.index');
     }
     public function cart(){
         return view('FrontEnd.pages.shop-cart');

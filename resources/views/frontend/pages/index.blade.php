@@ -10,18 +10,9 @@
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                        <ul ng-repeat="cat in categories">
+                            <li><a href="#">@{{cat.name}}</a></li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -526,12 +517,5 @@
     </section>
     <!-- Blog Section End -->
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.nice-select.min.js"></script>
-    <script src="js/jquery-ui.min.js"></script>
-    <script src="js/jquery.slicknav.js"></script>
-    <script src="js/mixitup.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+    
     @endsection

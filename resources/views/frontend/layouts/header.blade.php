@@ -7,12 +7,12 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="img/logo.png" alt=""></a>
+            <a href="{{ route('index') }}"><img src="img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
                 <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
@@ -32,16 +32,8 @@
         </div>
         <nav class="humberger__menu__nav mobile-menu">
             <ul>
-                <li class="active"><a href="./index.html">Home</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
-                <li><a href="#">Pages</a>
-                    <ul class="header__menu__dropdown">
-                        <li><a href="./shop-details.html">Shop Details</a></li>
-                        <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                        <li><a href="./checkout.html">Check Out</a></li>
-                        <li><a href="./blog-details.html">Blog Details</a></li>
-                    </ul>
-                </li>
+                <li class="active"><a href="{{ route('index') }}">Home</a></li>
+                <li><a href="{{ route('product') }}">Shop</a></li>
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./contact.html">Contact</a></li>
             </ul>
@@ -104,22 +96,14 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                        <a href="{{ route('index') }}"><img src="img/logo.png" alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="./shop-grid.html">Shop</a></li>
-                            <li><a href="#">Pages</a>
-                                <ul class="header__menu__dropdown">
-                                    <li><a href="./shop-details.html">Shop Details</a></li>
-                                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                                    <li><a href="./checkout.html">Check Out</a></li>
-                                    <li><a href="./blog-details.html">Blog Details</a></li>
-                                </ul>
-                            </li>
+                            <li class="active"><a href="{{ route('index') }}">Home</a></li>
+                            <li><a href="{{ route('product') }}">Shop</a></li>
                             <li><a href="./blog.html">Blog</a></li>
                             <li><a href="./contact.html">Contact</a></li>
                         </ul>
@@ -129,7 +113,7 @@
                     <div class="header__cart">
                         <ul>
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="{{ route('cart') }}"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
                         <div class="header__cart__price">item: <span>$150.00</span></div>
                     </div>

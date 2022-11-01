@@ -16,7 +16,10 @@ class CategoryController extends Controller
     public function index()
     {
         $cats =Category::all();
-        return response($cats);
+        return response([
+            'result' => $cats,
+            'message' => 'ok'
+        ],200);
     }
 
     /**
