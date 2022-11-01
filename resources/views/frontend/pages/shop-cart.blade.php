@@ -55,7 +55,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/product/banner.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -91,11 +91,11 @@
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-1.jpg" alt="">
-                                        <h5>Vegetable’s Package</h5>
+                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
+                                        <h5>Samsung S22 Utral Utral</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $55.00
+                                        $110.00
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -113,11 +113,11 @@
                                 </tr>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-2.jpg" alt="">
-                                        <h5>Fresh Garden Vegetable</h5>
+                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
+                                        <h5>Samsung S22 Utral</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $39.00
+                                        $110.00
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -127,7 +127,7 @@
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $39.99
+                                        $110.00 
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
@@ -135,11 +135,11 @@
                                 </tr>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="img/cart/cart-3.jpg" alt="">
-                                        <h5>Organic Bananas</h5>
+                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
+                                        <h5>Samsung S22 Utral</h5>
                                     </td>
                                     <td class="shoping__cart__price">
-                                        $69.00
+                                        $110.00
                                     </td>
                                     <td class="shoping__cart__quantity">
                                         <div class="quantity">
@@ -149,7 +149,7 @@
                                         </div>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $69.99
+                                        $110.00
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>

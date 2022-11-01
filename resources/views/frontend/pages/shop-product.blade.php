@@ -36,7 +36,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/product/banner.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -61,10 +61,9 @@
                     <div class="sidebar">
                         <div class="sidebar__item">
                             <h4>Categories</h4>
-                            <ul>
-                                <li><a href="#">Iphone</a></li>
-                                <li><a href="#">Samsung</a></li>
-                                <li><a href="#">Xiaomi</a></li>
+                            <ul ng-repeat="cate in categories" ng-if="cate.parent_id==0">
+                                <li><a href="#">@{{cate.name}}</a></li>
+                                
                             </ul>
                         </div>
                         <div class="sidebar__item">
@@ -328,7 +327,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6" ng-repeat="pro in products">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="@{{pro.images}}">
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>

@@ -22,4 +22,8 @@ class Category extends Model
         'name',
         'active'
     ];
+
+    public function chils(){
+        return $this->hasMany(Category::class,'parent_id','id');
+    }
 }
