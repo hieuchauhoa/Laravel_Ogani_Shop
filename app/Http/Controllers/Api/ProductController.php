@@ -16,17 +16,19 @@ class ProductController extends Controller
     public function index()
     {
         $prod =Product::all();
-        return response($prod);
+        return response([
+            'result' => $prod,
+            'message' => 'ok'
+        ],200);
     }
     public function detail($id)
     {
         $prod =Product::find($id);
         if($prod){
-            return response()->json([
-                'data' => $prod,
-                'status_code' => 200,
+            return response([
+                'result' => $prod,
                 'message' => 'ok'
-            ]);
+            ],200);
         }
         return response()->json([
             'data' => null,
