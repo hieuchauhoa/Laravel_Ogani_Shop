@@ -57,29 +57,9 @@
         <div class="container">
             <div class="row" >
                 <div  class="categories__slider owl-carousel" >
-                    <div class="col-lg-3">
+                    <div class="col-lg-3" ng-repeat="cate in categories" ng-if="cate.parent_id!=0">
                         <div class="categories__item set-bg" data-setbg="https://www.beeart.vn/uploads/file/images/blog/apple/bee_art_logo_apple_2%20copy.jpg"  >
-                            <h5><a href="#">Apple</a></h5>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="https://www.beeart.vn/uploads/file/images/blog/apple/bee_art_logo_apple_2%20copy.jpg"  >
-                            <h5><a href="#">Apple</a></h5>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="https://www.beeart.vn/uploads/file/images/blog/apple/bee_art_logo_apple_2%20copy.jpg"  >
-                            <h5><a href="#">Apple</a></h5>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="https://www.beeart.vn/uploads/file/images/blog/apple/bee_art_logo_apple_2%20copy.jpg"  >
-                            <h5><a href="#">Apple</a></h5>
-                        </div>
-                    </div> 
-                    <div class="col-lg-3">
-                        <div class="categories__item set-bg" data-setbg="https://www.beeart.vn/uploads/file/images/blog/apple/bee_art_logo_apple_2%20copy.jpg"  >
-                            <h5><a href="#">Apple</a></h5>
+                            <h5><a href="#">@{{cate.name}}</a></h5>
                         </div>
                     </div> 
                 </div>
@@ -105,9 +85,9 @@
                 </div>
             </div>
             <div class="row featured__filter" >
-                <div ng-repeat="pro in products" class="col-lg-3 col-md-4 col-sm-6 mix category@{{pro.cate_id}}">
+                <div ng-repeat="pro in productsAll" class="col-lg-3 col-md-4 col-sm-6 mix category@{{pro.cate_id}}">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="@{{pro.images}}">
+                        <div class="featured__item__pic set-bg" data-setbg="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -153,64 +133,36 @@
                     <div class="latest-product__text">
                         <h4>Latest Products</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
+                            <div class="latest-prdouct__slider__item" ng-repeat="pro in productsLast">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[0].name}}</h6>
+                                        <span>@{{pro[0].price}}đ</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-trang-600x600.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[1].name}}</h6>
+                                        <span>@{{pro[1].price}}đ</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-trang-600x600.jpg" alt="">
+                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[2].name}}</h6>
+                                        <span>@{{pro[2].price}}đ</span>
                                     </div>
                                 </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -218,64 +170,36 @@
                     <div class="latest-product__text">
                         <h4>Top Rated Products</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
+                            <div class="latest-prdouct__slider__item" ng-repeat="pro in productsRate">
+                                <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[0].name}}</h6>
+                                        <span>@{{pro[0].price}}đ</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-trang-600x600.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[1].name}}</h6>
+                                        <span>@{{pro[1].price}}đ</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-trang-600x600.jpg" alt="">
+                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22 Utral</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[2].name}}</h6>
+                                        <span>@{{pro[2].price}}đ</span>
                                     </div>
                                 </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -283,64 +207,36 @@
                     <div class="latest-product__text">
                         <h4>Review Products</h4>
                         <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
+                            <div class="latest-prdouct__slider__item" ng-repeat="pro in productsReview">
+                                <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[0].name}}</h6>
+                                        <span>@{{pro[0].price}}đ</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-trang-600x600.jpg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                            <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[1].name}}</h6>
+                                        <span>@{{pro[1].price}}đ</span>
                                     </div>
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/153856/iphone-11-trang-600x600.jpg" alt="">
+                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
-                                        <h6>Samsung S22</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Samsung S22</h6>
-                                        <span>$30.00</span>
+                                        <h6>@{{pro[2].name}}</h6>
+                                        <span>@{{pro[2].price}}đ</span>
                                     </div>
                                 </a>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

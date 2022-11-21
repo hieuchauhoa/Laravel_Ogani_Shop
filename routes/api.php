@@ -22,5 +22,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 #FE
 Route::get('product',[ProductController::class,'index'])->name('api.product');
-Route::get('product/{id}',[ProductController::class,'detail'])->name('api.detail');
+Route::get('product-all',[ProductController::class,'index_all'])->name('api.productAll');
+Route::get('product-last',[ProductController::class,'lastProduct'])->name('api.productLast');
+Route::get('product-review',[ProductController::class,'reviewProduct'])->name('api.productReview');
+Route::get('product-rate',[ProductController::class,'rateProduct'])->name('api.productRate');
+//Route::get('product/{id}',[ProductController::class,'detail'])->name('api.detail');
 Route::get('category',[CategoryController::class,'index'])->name('api.category');

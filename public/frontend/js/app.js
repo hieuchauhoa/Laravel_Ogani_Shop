@@ -1,9 +1,102 @@
 var app= angular.module('app',[]);
 app.controller('AppController', function($scope,$http){
+
+  $scope.products = [];
+  $scope.productsAll = [];
+  $productsReview = [];
+  $productsLast = [];
+  $productsRate = [];
+  $scope.totalPages = 0;
+  $scope.currentPage = 1;
+  $scope.range = [];
+  $scope.totalProduct=0;
+  $scope.key='';
+  $scope.id='';
+
+  $scope.keyword=function(key) {
+    $scope.key=key;
+    $scope.getproduct();
+  };
+  $scope.cateID=function(id) {
+    $scope.id=id;
+    $scope.getproduct();
+  };
+
+
+
+
+  // data list product of page
+  $scope.getproduct = function (pageNumber) {
+      if (pageNumber === undefined) {
+          pageNumber = '1';
+      }
+      $http.get('http://localhost:8000/api/product/?page='+pageNumber+'&keyword='+$scope.key+'&cateID='+$scope.id).then(function(res){
+          $scope.products     = res.data.result.data;
+          $scope.totalPages   = res.data.result.last_page;
+          $scope.currentPage  = res.data.result.current_page;
+          $scope.totalProduct  = res.data.result.total;
+          // Pagination Range
+          var pages = [];
+
+          for (var i = 1; i <= res.data.result.last_page; i++) {
+            pages.push(i);
+          }
+          $scope.range = pages;
+      });
+  };
+
+
+
     $http.get('http://localhost:8000/api/category').then(function(res){
         $scope.categories =res.data.result;
+    });
     $http.get('http://localhost:8000/api/product').then(function(res){
        $scope.products=res.data.result; 
     });
+    $http.get('http://localhost:8000/api/product-all').then(function(res){
+       $scope.productsAll=res.data.result; 
     });
+    $http.get('http://localhost:8000/api/product-last').then(function(res){
+        productsLast=res.data.result; 
+        var size = 3;
+        $scope.productsLast = [];
+        for (var i = 0; i < productsLast.length; i += size) {
+          $scope.productsLast.push(productsLast.slice(i, i + size));
+        }
+    });
+    $http.get('http://localhost:8000/api/product-rate').then(function(res){
+      productsRate=res.data.result; 
+      var size = 3;
+      $scope.productsRate = [];
+      for (var i = 0; i < productsRate.length; i += size) {
+        $scope.productsRate.push(productsRate.slice(i, i + size));
+      }
+    });
+    $http.get('http://localhost:8000/api/product-review').then(function(res){
+      productsReview=res.data.result; 
+      var size = 3;
+      $scope.productsReview = [];
+      for (var i = 0; i < productsReview.length; i += size) {
+        $scope.productsReview.push(productsReview.slice(i, i + size));
+      }
+    });
+    
+
+
+
+});
+// define directive pagination
+app.directive('postsPagination', function(){
+  return {
+     restrict: 'E',
+     template: '<ul class="pagination">'+
+       '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getproduct(1)">«</a></li>'+
+       '<li ng-show="currentPage != 1"><a href="javascript:void(0)" ng-click="getproduct(currentPage-1)"><i class="fa fa-long-arrow-left"></i></a></li>'+
+       '<li ng-repeat="i in range" ng-class="{active : currentPage == i}">'+
+           '<a href="javascript:void(0)" ng-click="getproduct(i)">{{ i }}</a>'+
+       '</li>'+
+       '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getproduct(currentPage+1)"><i class="fa fa-long-arrow-right"></i></a></li>'+
+       '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getproduct(totalPages)">»</a></li>'+
+     '</ul>'
+  };
 });

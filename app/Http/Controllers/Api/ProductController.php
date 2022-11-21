@@ -13,14 +13,64 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $prod =Product::all();
+        
+        if($request->keyword){
+            //console.log($request->keyword);
+            if($request->sort){
+                $prod =Product::where('slug','like','%'.$request->keyword.'%')  
+                ->orWhere('name','like','%'.$request->keyword.'%')
+                ->orderByDesc($request->sort)
+                ->paginate(6);
+            }
+            else{
+                $prod =Product::where('slug','like','%'.$request->keyword.'%')  
+                ->orWhere('name','like','%'.$request->keyword.'%')
+                ->paginate(6);
+            }
+            
+        }
+        else if($request->cateID){
+            if($request->sort){
+                $prod =Product::where('cate_id',$request->cateID)->orderBy($request->sort)->paginate(6);
+            }
+            else{
+                $prod =Product::where('cate_id',$request->cateID)->paginate(6);
+            }
+        }
+        else{
+            if($request->sort){
+                $prod =Product::orderBy($request->sort)->paginate(6);
+            }
+            else{
+                $prod =Product::paginate(6);
+            }
+            
+        }
+        if($prod){
+            return response()->json([
+                'result' => $prod,
+                'message' => 'ok'
+            ],200);
+        }
+        return response()->json([
+            'data' => null,
+            'status_code' => 404,
+            'message' => 'Data Not Found'
+        ]);
+        
+        
+    }
+    public function index_all()
+    {
+        $prod =Product::All();
         return response([
             'result' => $prod,
             'message' => 'ok'
         ],200);
     }
+    
     public function detail($id)
     {
         $prod =Product::find($id);
@@ -35,6 +85,68 @@ class ProductController extends Controller
             'status_code' => 404,
             'message' => 'Data Not Found'
         ]);
+    }
+
+    // public function search($string)
+    // {
+    //     $prod =Product::where("slug","like","%".$string."%")->get();
+    //     if($prod){
+    //         return response([
+    //             'result' => $prod,
+    //             'message' => 'ok'
+    //         ],200);
+    //     }
+    //     return response()->json([
+    //         'data' => null,
+    //         'status_code' => 404,
+    //         'message' => 'Data Not Found'
+    //     ]);
+    // }
+
+    public function lastProduct()
+    {
+        $prod =Product::latest()->take(6)->get();
+        if($prod){
+            return response([
+                'result' => $prod,
+                'message' => 'ok'
+            ],200);
+        }
+        return response()->json([
+            'data' => null,
+            'status_code' => 404,
+            'message' => 'Data Not Found'
+        ]);
+    }
+    public function rateProduct()
+    {
+            $prod =Product::inRandomOrder()->take(9)->get();
+            if($prod){
+                return response([
+                    'result' => $prod,
+                    'message' => 'ok'
+                ],200);
+            }
+            return response()->json([
+                'data' => null,
+                'status_code' => 404,
+                'message' => 'Data Not Found'
+            ]);
+    }
+    public function reviewProduct()
+    {
+            $prod =Product::inRandomOrder()->take(6)->get();
+            if($prod){
+                return response([
+                    'result' => $prod,
+                    'message' => 'ok'
+                ],200);
+            }
+            return response()->json([
+                'data' => null,
+                'status_code' => 404,
+                'message' => 'Data Not Found'
+            ]);
     }
     /**
      * Show the form for creating a new resource.

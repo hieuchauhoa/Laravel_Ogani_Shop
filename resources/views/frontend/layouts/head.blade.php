@@ -32,3 +32,4 @@
 
     <!--angularjs-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.9/angular.min.js"></script>
+    <script src="js/app.js"></script>
