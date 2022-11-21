@@ -858,11 +858,35 @@ ol {
 }
 
 .featured__item__pic {
-	height: 270px;
-	position: relative;
-	overflow: hidden;
-	background-position: center center;
+	width: 100%;
+    height: 270px;
+    position: relative;
+    overflow: hidden;
+    background-position: center center;
+    margin: 0px auto;
+	
 }
+@media only screen and (max-width: 600px) {
+	.featured__item__pic {
+		width: 68%;
+		height: 270px;
+		position: relative;
+		overflow: hidden;
+		background-position: center center;
+		margin: 0px auto;
+		
+	}
+	body{
+		overflow-x: hidden;
+	}
+	.hero__item {
+		height: 300px;
+		 display: flex; 
+		align-items: center;
+		padding-left: 75px;
+		/* width: 101%; */
+	}
+  }
 
 .featured__item__pic__hover {
 	position: absolute;

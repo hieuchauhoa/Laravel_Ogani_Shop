@@ -3,6 +3,7 @@ app.controller('AppController', function($scope,$http){
 
   $scope.products = [];
   $scope.productsAll = [];
+  $scope.banners = [];
   $productsReview = [];
   $productsLast = [];
   $productsRate = [];
@@ -12,6 +13,7 @@ app.controller('AppController', function($scope,$http){
   $scope.totalProduct=0;
   $scope.key='';
   $scope.id='';
+  $scope.sort='';
 
   $scope.keyword=function(key) {
     $scope.key=key;
@@ -19,6 +21,10 @@ app.controller('AppController', function($scope,$http){
   };
   $scope.cateID=function(id) {
     $scope.id=id;
+    $scope.getproduct();
+  };
+  $scope.getSort=function(sort) {
+    $scope.sort=sort;
     $scope.getproduct();
   };
 
@@ -30,7 +36,7 @@ app.controller('AppController', function($scope,$http){
       if (pageNumber === undefined) {
           pageNumber = '1';
       }
-      $http.get('http://localhost:8000/api/product/?page='+pageNumber+'&keyword='+$scope.key+'&cateID='+$scope.id).then(function(res){
+      $http.get('http://localhost:8000/api/product/?page='+pageNumber+'&keyword='+$scope.key+'&cateID='+$scope.id+'&sort='+$scope.sort).then(function(res){
           $scope.products     = res.data.result.data;
           $scope.totalPages   = res.data.result.last_page;
           $scope.currentPage  = res.data.result.current_page;
@@ -55,6 +61,9 @@ app.controller('AppController', function($scope,$http){
     });
     $http.get('http://localhost:8000/api/product-all').then(function(res){
        $scope.productsAll=res.data.result; 
+    });
+    $http.get('http://localhost:8000/api/banner').then(function(res){
+       $scope.banners=res.data.result; 
     });
     $http.get('http://localhost:8000/api/product-last').then(function(res){
         productsLast=res.data.result; 

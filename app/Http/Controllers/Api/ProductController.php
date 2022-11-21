@@ -21,7 +21,7 @@ class ProductController extends Controller
             if($request->sort){
                 $prod =Product::where('slug','like','%'.$request->keyword.'%')  
                 ->orWhere('name','like','%'.$request->keyword.'%')
-                ->orderByDesc($request->sort)
+                ->orderBy($request->sort)
                 ->paginate(6);
             }
             else{

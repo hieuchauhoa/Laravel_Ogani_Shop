@@ -57,9 +57,11 @@
                     <div class="sidebar">
                         <div class="sidebar__item">
                             <h4>Categories</h4>
+                            <ul>
+                                <li><a href ng-click="cateID('')">All</a></li>  
+                            </ul>
                             <ul ng-repeat="cate in categories" ng-if="cate.parent_id!=0">
-                                <li><a href ng-click="cateID(cate.id)">@{{cate.name}}</a></li>
-                                
+                                <li><a href ng-click="cateID(cate.id)">@{{cate.name}}</a></li>   
                             </ul>
                         </div>
                         <div class="sidebar__item">
@@ -89,7 +91,7 @@
                             </div>
                             <div class="sidebar__item__color sidebar__item__color--gray">
                                 <label for="gray">
-                                    Yellow
+                                    Gray
                                     <input type="radio" id="gray" ng-click="keyword('gray')">
                                 </label>
                             </div>
@@ -158,7 +160,7 @@
                                     <div class="latest-prdouct__slider__item" ng-repeat="pro in productsLast">
                                         <a href="#" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                                <img src="@{{pro[0].images}}" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>@{{pro[0].name}}</h6>
@@ -167,7 +169,7 @@
                                         </a>
                                         <a href="#" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                                <img src="@{{pro[1].images}}" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>@{{pro[1].name}}</h6>
@@ -176,7 +178,7 @@
                                         </a>
                                         <a href="#" class="latest-product__item">
                                             <div class="latest-product__item__pic">
-                                                <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                                <img src="@{{pro[2].images}}" alt="">
                                             </div>
                                             <div class="latest-product__item__text">
                                                 <h6>@{{pro[2].name}}</h6>
@@ -199,7 +201,7 @@
                                 <div class="col-lg-4" ng-repeat="pro in productsAll" ng-if="pro.price_sale!=null">
                                     <div class="product__discount__item">
                                         <div class="product__discount__item__pic set-bg"
-                                            data-setbg="https://cdn.tgdd.vn/Products/Images/42/230521/iphone-13-pro-thumb-600x600.jpg">
+                                            data-setbg="@{{pro.images}}">
                                             <div class="product__discount__percent">@{{100-(pro.price_sale/pro.price*100)| number:0}}%</div>
                                             <ul class="product__item__pic__hover">
                                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
@@ -219,34 +221,40 @@
                     </div>
                     <div class="filter__item">
                         <div class="row">
-                            <div class="col-lg-4 col-md-5">
+                            <div class="col-lg-5 col-md-5">
                                 <div class="filter__sort">
-                                    <span>Sort By</span>
-                                    <select>
-                                        <option value="0">Default</option>
-                                        <option value="1">A-Z</option>
-                                        <option value="2">Z-A</option>
- 
-                                    </select>
+                                    <span>Sort By: </span>
+                                    <div class="sidebar__item__size">
+                                        <label for="sort1">
+                                            Default
+                                            <input type="radio" id="sort1" ng-click="getSort('')">
+                                        </label>
+                                    </div>
+                                    <div class="sidebar__item__size">
+                                        <label for="sort2">
+                                            A-Z
+                                            <input type="radio" id="sort2" ng-click="getSort('name')">
+                                        </label>
+                                    </div>
+                                    <div class="sidebar__item__size">
+                                        <label for="sort3">
+                                            Z-A
+                                            <input type="radio" id="sort3" ng-click="getSort('name')">
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-4 col-md-4">
+                            <div class="col-lg-5 col-md-4">
                                 <div class="filter__found">
                                     <h6><span>@{{totalProduct}}</span> Products found - Page: <span>@{{currentPage}}</span>/<span>@{{totalPages}}</span></h6>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-3">
-                                <div class="filter__option">
-                                    <span class="icon_grid-2x2"></span>
-                                    <span class="icon_ul"></span>
-                                </div>
-                            </div>
+                            </div>                          
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6" ng-repeat="pro in products">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg">
+                                <div class="product__item__pic set-bg" data-setbg="@{{pro.images}}">
                                     <ul class="product__item__pic__hover">
                                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -255,7 +263,7 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6><a href="#">@{{pro.name}}</a></h6>
-                                    <h5>@{{pro.price}}</h5>
+                                    <h5>@{{pro.price}}đ</h5>
                                 </div>
                             </div>
                         </div>

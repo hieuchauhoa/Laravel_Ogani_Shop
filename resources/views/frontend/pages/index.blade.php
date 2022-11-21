@@ -12,9 +12,9 @@
                         </div>
                         <ul ng-repeat="cat in categories" ng-if="cat.parent_id==0">
                             <li>
-                                <a href="#">@{{cat.name}}</a>
+                                <a href>@{{cat.name}}</a>
                                 
-                                    <li ng-repeat="cate in categories" ng-if="cate.parent_id==cat.id"><a href="#"> -- @{{cate.name}}</a></li>
+                                    <li ng-repeat="cate in categories" ng-if="cate.parent_id==cat.id"><a href="{{route('product')}}" ng-click="cateID(cate.id)"> -- @{{cate.name}}</a></li>
                                 
                             </li>
 
@@ -25,9 +25,9 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
-                                <input type="text" placeholder="What do you need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                            <form action="{{route('product')}}">
+                                <input type="text" placeholder="What do you need?" ng-model="key">
+                                <button type="submit" ng-click="keyword(key)" class="site-btn">SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
@@ -40,10 +40,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="hero__item set-bg" data-setbg="img/banner/shop_phone_banner.png ">
+                    <div class="hero__item set-bg" ng-repeat="banner in banners" ng-if="banner.name=='banner1'" ng-if="banner.status==1" data-setbg="@{{banner.url}}">
                         <div class="hero__text">
                             </br> </br> </br> </br> </br> </br> </br> </br> </br> </br> 
-                            <a href="#" class="primary-btn">SHOP NOW</a>
+                            <a href="{{route('product')}}" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
             <div class="row" >
                 <div  class="categories__slider owl-carousel" >
                     <div class="col-lg-3" ng-repeat="cate in categories" ng-if="cate.parent_id!=0">
-                        <div class="categories__item set-bg" data-setbg="https://www.beeart.vn/uploads/file/images/blog/apple/bee_art_logo_apple_2%20copy.jpg"  >
+                        <div class="categories__item set-bg" data-setbg="@{{cate.img}}"  >
                             <h5><a href="#">@{{cate.name}}</a></h5>
                         </div>
                     </div> 
@@ -87,7 +87,7 @@
             <div class="row featured__filter" >
                 <div ng-repeat="pro in productsAll" class="col-lg-3 col-md-4 col-sm-6 mix category@{{pro.cate_id}}">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg">
+                        <div class="featured__item__pic set-bg" data-setbg="@{{pro.images}}">
                             <ul class="featured__item__pic__hover">
                                 <li><a href="#"><i class="fa fa-heart"></i></a></li>
                                 <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -111,13 +111,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="img/banner/banner-1.jpg" alt="">
+                    <div class="banner__pic" ng-repeat="banner in banners" ng-if="banner.name=='banner2'" ng-if="banner.status==1">
+                        <img src="@{{banner.url}}" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="img/banner/banner-2.jpg" alt="">
+                    <div class="banner__pic" ng-repeat="banner in banners" ng-if="banner.name=='banner3'" ng-if="banner.status==1">
+                        <img src="@{{banner.url}}" alt="">
                     </div>
                 </div>
             </div>
@@ -136,7 +136,7 @@
                             <div class="latest-prdouct__slider__item" ng-repeat="pro in productsLast">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[0].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[0].name}}</h6>
@@ -145,7 +145,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[1].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[1].name}}</h6>
@@ -154,7 +154,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[2].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[2].name}}</h6>
@@ -173,7 +173,7 @@
                             <div class="latest-prdouct__slider__item" ng-repeat="pro in productsRate">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[0].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[0].name}}</h6>
@@ -182,7 +182,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[1].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[1].name}}</h6>
@@ -191,7 +191,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[2].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[2].name}}</h6>
@@ -210,7 +210,7 @@
                             <div class="latest-prdouct__slider__item" ng-repeat="pro in productsReview">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[0].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[0].name}}</h6>
@@ -219,7 +219,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[1].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[1].name}}</h6>
@@ -228,7 +228,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/258047/samsung-galaxy-z-flip4-5g-128gb-thumb-tim-600x600.jpg" alt="">
+                                        <img src="@{{pro[2].images}}" alt="">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>@{{pro[2].name}}</h6>

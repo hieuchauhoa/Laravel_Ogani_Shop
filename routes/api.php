@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,4 @@ Route::get('product-review',[ProductController::class,'reviewProduct'])->name('a
 Route::get('product-rate',[ProductController::class,'rateProduct'])->name('api.productRate');
 //Route::get('product/{id}',[ProductController::class,'detail'])->name('api.detail');
 Route::get('category',[CategoryController::class,'index'])->name('api.category');
+Route::get('banner',[BannerController::class,'index'])->name('api.banner');
