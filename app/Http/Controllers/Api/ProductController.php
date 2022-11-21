@@ -148,6 +148,21 @@ class ProductController extends Controller
                 'message' => 'Data Not Found'
             ]);
     }
+    public function relatedProduct()
+    {
+            $prod =Product::inRandomOrder()->take(4)->get();
+            if($prod){
+                return response([
+                    'result' => $prod,
+                    'message' => 'ok'
+                ],200);
+            }
+            return response()->json([
+                'data' => null,
+                'status_code' => 404,
+                'message' => 'Data Not Found'
+            ]);
+    }
     /**
      * Show the form for creating a new resource.
      *

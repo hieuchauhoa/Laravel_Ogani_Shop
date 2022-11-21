@@ -3,6 +3,7 @@ app.controller('AppController', function($scope,$http){
 
   $scope.products = [];
   $scope.productsAll = [];
+  $scope.productsRelated = [];
   $scope.banners = [];
   $productsReview = [];
   $productsLast = [];
@@ -88,6 +89,9 @@ app.controller('AppController', function($scope,$http){
       for (var i = 0; i < productsReview.length; i += size) {
         $scope.productsReview.push(productsReview.slice(i, i + size));
       }
+    });
+    $http.get('http://localhost:8000/api/product-related').then(function(res){
+        $scope.productsRelated=res.data.result; 
     });
     
 

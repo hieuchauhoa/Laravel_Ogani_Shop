@@ -13,12 +13,16 @@ use App\Http\Controllers\FrontEndController;
 
 
 #FE
-Route::get('/',[FrontEndController::class,'index'])->name('index');
-Route::get('/cart',[FrontEndController::class,'cart'])->name('cart');
-Route::get('/product',[FrontEndController::class,'product'])->name('product');
-Route::get('/product-detail',[FrontEndController::class,'product_detail'])->name('product-detail');
-Route::get('/contact',[FrontEndController::class,'contact'])->name('contact');
-
+Route::prefix('/')->group(function (){
+    Route::get('',[FrontEndController::class,'index'])->name('index');
+    Route::get('cart',[FrontEndController::class,'cart'])->name('cart');
+    Route::get('product',[FrontEndController::class,'product'])->name('product');
+    Route::prefix('product-detail')->group(function (){
+        //Route::get('{product_id}',[FrontEndController::class,'product_detail']);
+        Route::get('',[FrontEndController::class,'product_detail']);
+    });
+    Route::get('contact',[FrontEndController::class,'contact'])->name('contact');
+});
     ##Admin
     Route::get('/admin/login',[LoginController::class,'index'])->name('login');
     Route::post('/admin/admin_login',[LoginController::class, 'store']);
