@@ -131,7 +131,7 @@
                         <h4>Latest Products</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item" ng-repeat="pro in productsLast">
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[0].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[0].images}}" alt="">
                                     </div>
@@ -140,7 +140,7 @@
                                         <span>@{{pro[0].price}}đ</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[1].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[1].images}}" alt="">
                                     </div>
@@ -149,7 +149,7 @@
                                         <span>@{{pro[1].price}}đ</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[2].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[2].images}}" alt="">
                                     </div>
@@ -168,7 +168,7 @@
                         <h4>Top Rated Products</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item" ng-repeat="pro in productsRate">
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[0].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[0].images}}" alt="">
                                     </div>
@@ -177,7 +177,7 @@
                                         <span>@{{pro[0].price}}đ</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[1].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[1].images}}" alt="">
                                     </div>
@@ -186,7 +186,7 @@
                                         <span>@{{pro[1].price}}đ</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[2].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[2].images}}" alt="">
                                     </div>
@@ -205,7 +205,7 @@
                         <h4>Review Products</h4>
                         <div class="latest-product__slider owl-carousel">
                             <div class="latest-prdouct__slider__item" ng-repeat="pro in productsReview">
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[0].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[0].images}}" alt="">
                                     </div>
@@ -214,7 +214,7 @@
                                         <span>@{{pro[0].price}}đ</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[1].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[1].images}}" alt="">
                                     </div>
@@ -223,7 +223,7 @@
                                         <span>@{{pro[1].price}}đ</span>
                                     </div>
                                 </a>
-                                <a href="#" class="latest-product__item">
+                                <a href="/product-detail/@{{pro[2].id}}" class="latest-product__item">
                                     <div class="latest-product__item__pic">
                                         <img src="@{{pro[2].images}}" alt="">
                                     </div>
