@@ -22,6 +22,10 @@ Route::prefix('/')->group(function (){
        // Route::get('',[FrontEndController::class,'product_detail']);
     });
     Route::get('contact',[FrontEndController::class,'contact'])->name('contact');
+    //cart
+    Route::post('/saveCart',[CartController::class,'save_cart']);
+
+
 });
     ##Admin
     Route::get('/admin/login',[LoginController::class,'index'])->name('login');

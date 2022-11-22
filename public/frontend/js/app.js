@@ -34,6 +34,7 @@ app.controller('AppController', function($scope,$http){
     console.log("run");
     $http.get('http://localhost:8000/api/product/?productid='+productid).then(function(res){
           $scope.productSingle     = res.data.result;
+          $scope.productSingleReview = res.data.result.review;
     });
   };
 
@@ -120,5 +121,12 @@ app.directive('postsPagination', function(){
        '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getproduct(currentPage+1)"><i class="fa fa-long-arrow-right"></i></a></li>'+
        '<li ng-show="currentPage != totalPages"><a href="javascript:void(0)" ng-click="getproduct(totalPages)">»</a></li>'+
      '</ul>'
+  };
+});
+
+app.directive('productsinglereview', function(){
+  return {
+     restrict: 'E',
+     template: 'productSingleReview'
   };
 });
