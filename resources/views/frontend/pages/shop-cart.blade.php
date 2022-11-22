@@ -98,10 +98,10 @@
                                                 {{ csrf_field() }}
                                                 <div class="quantity">
                                                     <div class="pro-qty">
-                                                        <input type="text" name="quantity_cart" value="{{$v_content->qty}}">
-                                                        <input type="hidden" name="rowId_cart" value="{{$v_content->rowId}}">
+                                                        <input type="text" name="quantity_cart" value="{{$v_content->qty}}">  
                                                     </div>
-                                                    <button type="submit" name="update_qtyt" value="cập nhật" class="primary-btn">Upadate</button>
+                                                    <input type="hidden" name="rowId_cart" value="{{$v_content->rowId}}">
+                                                    <button type="submit" name="update_qty" value="cập nhật" class="primary-btn">Upadate</button>
                                                 </div>
                                             </form>
                                         </td>
