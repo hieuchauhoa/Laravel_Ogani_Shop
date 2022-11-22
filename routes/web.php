@@ -18,8 +18,8 @@ Route::prefix('/')->group(function (){
     Route::get('cart',[FrontEndController::class,'cart'])->name('cart');
     Route::get('product',[FrontEndController::class,'product'])->name('product');
     Route::prefix('product-detail')->group(function (){
-        //Route::get('{product_id}',[FrontEndController::class,'product_detail']);
-        Route::get('',[FrontEndController::class,'product_detail']);
+        Route::get('{product_id}',[FrontEndController::class,'product_detail']);
+       // Route::get('',[FrontEndController::class,'product_detail']);
     });
     Route::get('contact',[FrontEndController::class,'contact'])->name('contact');
 });

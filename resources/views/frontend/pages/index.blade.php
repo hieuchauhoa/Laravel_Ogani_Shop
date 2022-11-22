@@ -91,8 +91,8 @@
                             </ul>
                         </div>
                         <div class="featured__item__text">
-                            <!-- <h6><a href="/product-detail/@{{pro.id}}">@{{pro.name}}</a></h6> -->
-                            <h6><a href="/product-detail">@{{pro.name}}</a></h6>
+                            <h6><a href="/product-detail/@{{pro.id}}">@{{pro.name}}</a></h6>
+                            <!-- <h6><a href="/product-detail">@{{pro.name}}</a></h6> -->
                             <h5>@{{pro.price}}đ</h5>
                         </div>
                     </div>

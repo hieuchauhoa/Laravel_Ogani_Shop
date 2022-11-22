@@ -48,6 +48,9 @@ class ProductController extends Controller
             }
             
         }
+        if($request->productid){
+            $prod =Product::find($request->productid);
+        }
         if($prod){
             return response()->json([
                 'result' => $prod,
@@ -71,21 +74,7 @@ class ProductController extends Controller
         ],200);
     }
     
-    public function detail($id)
-    {
-        $prod =Product::find($id);
-        if($prod){
-            return response([
-                'result' => $prod,
-                'message' => 'ok'
-            ],200);
-        }
-        return response()->json([
-            'data' => null,
-            'status_code' => 404,
-            'message' => 'Data Not Found'
-        ]);
-    }
+    
 
     // public function search($string)
     // {

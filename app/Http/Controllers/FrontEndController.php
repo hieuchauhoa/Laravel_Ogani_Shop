@@ -15,8 +15,9 @@ class FrontEndController extends Controller
     public function product(){
         return view('frontend.pages.shop-product');
     }
-    public function product_detail(){
-        return view('frontend.pages.shop-product-detail');
+    public function product_detail($idProduct){
+        //$product=Product::find($idProduct);
+        return view('frontend.pages.shop-product-detail',['productID'=>$idProduct]);
     }
     public function contact(){
         return view('frontend.pages.shop-contact');

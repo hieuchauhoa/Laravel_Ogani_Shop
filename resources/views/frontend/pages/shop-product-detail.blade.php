@@ -1,7 +1,7 @@
 @extends('FrontEnd.layouts.master')
 @section('main-content')
 <!-- Hero Section Begin -->
-<section class="hero hero-normal">
+<section class="hero hero-normal" ng-init="getproductid({{$productID}})">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -43,7 +43,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/product/banner.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="/img/product/banner.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -69,23 +69,23 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
+                                src="@{{productSingle.images}}" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
-                            <img data-imgbigurl="img/product/details/product-details-2.jpg"
-                                src="img/product/details/thumb-1.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-3.jpg"
-                                src="img/product/details/thumb-2.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-5.jpg"
-                                src="img/product/details/thumb-3.jpg" alt="">
-                            <img data-imgbigurl="img/product/details/product-details-4.jpg"
-                                src="img/product/details/thumb-4.jpg" alt="">
+                            <img data-imgbigurl="/img/product/details/product-details-2.jpg"
+                                src="/img/product/details/thumb-1.jpg" alt="">
+                            <img data-imgbigurl="/img/product/details/product-details-3.jpg"
+                                src="/img/product/details/thumb-2.jpg" alt="">
+                            <img data-imgbigurl="/img/product/details/product-details-5.jpg"
+                                src="/img/product/details/thumb-3.jpg" alt="">
+                            <img data-imgbigurl="/img/product/details/product-details-4.jpg"
+                                src="/img/product/details/thumb-4.jpg" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>Vetgetable’s Package</h3>
+                        <h3>@{{productSingle.name}}</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -94,7 +94,7 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">$50.00</div>
+                        <div class="product__details__price">@{{productSingle.price}}đ</div>
                         <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
                             vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
                             quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
