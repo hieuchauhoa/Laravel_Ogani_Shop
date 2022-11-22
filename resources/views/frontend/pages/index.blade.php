@@ -13,7 +13,7 @@
                         <ul ng-repeat="cat in categories" ng-if="cat.parent_id==0">
                             <li>
                                 <a href>@{{cat.name}}</a>
-                                <li ng-repeat="cate in categories" ng-if="cate.parent_id==cat.id"><a href="{{route('product')}}" ng-click="cateID(cate.id)"> -- @{{cate.name}}</a></li>
+                                <li ng-repeat="cate in categories" ng-if="cate.parent_id==cat.id"><a href="/product?cateID=@{{cate.id}}" ng-click="cateID(cate.id)"> -- @{{cate.name}}</a></li>
                             </li>
                         </ul>
                     </div>
@@ -21,8 +21,8 @@
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="{{route('product')}}">
-                                <input type="text" placeholder="What do you need?" ng-model="key">
+                            <form action="/product" method="get">
+                                <input type="text" placeholder="What do you need?" ng-model="key" name="keyword">
                                 <button type="submit" ng-click="keyword(key)" class="site-btn">SEARCH</button>
                             </form>
                         </div>
@@ -55,7 +55,7 @@
                 <div  class="categories__slider owl-carousel" >
                     <div class="col-lg-3" ng-repeat="cate in categories" ng-if="cate.parent_id!=0">
                         <div class="categories__item set-bg" data-setbg="@{{cate.img}}"  >
-                            <h5><a href="#">@{{cate.name}}</a></h5>
+                            <h5><a href="/product?cateID=@{{cate.id}}">@{{cate.name}}</a></h5>
                         </div>
                     </div> 
                 </div>

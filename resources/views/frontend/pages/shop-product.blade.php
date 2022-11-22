@@ -1,7 +1,7 @@
 @extends('FrontEnd.layouts.master')
 @section('main-content')
 <!-- Hero Section Begin -->
-<section class="hero hero-normal" ng-init="getproduct()">
+<section class="hero hero-normal"  ng-init="keywordAndcateID('{{$keyWord}}','{{$cateID}}')" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -32,7 +32,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/product/banner.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="/img/product/banner.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -50,7 +50,7 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Product Section Begin -->
-    <section class="product spad">
+    <section class="product spad" >
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-5">
@@ -191,7 +191,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-9 col-md-7">
+                <div class="col-lg-9 col-md-7" >
                     <div class="product__discount">
                         <div class="section-title product__discount__title">
                             <h2>Sale Off</h2>
@@ -224,9 +224,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="filter__item">
+                    <div class="filter__item" >
                         <div class="row">
-                            <div class="col-lg-5 col-md-5">
+                            <div class="col-lg-6 col-md-6">
                                 <div class="filter__sort">
                                     <span>Sort By: </span>
                                     <div class="sidebar__item__size">
@@ -249,7 +249,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-lg-5 col-md-4">
+                            <div class="col-lg-6 col-md-4">
                                 <div class="filter__found">
                                     <h6><span>@{{totalProduct}}</span> Products found - Page: <span>@{{currentPage}}</span>/<span>@{{totalPages}}</span></h6>
                                 </div>

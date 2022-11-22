@@ -12,8 +12,17 @@ class FrontEndController extends Controller
     public function cart(){
         return view('frontend.pages.shop-cart');
     }
-    public function product(){
-        return view('frontend.pages.shop-product');
+    public function product(Request $request){
+        if($request->keyword)
+        {
+            return view('frontend.pages.shop-product',['keyWord'=>$request->keyword,'cateID'=>'']);
+        }
+        if($request->cateID)
+        {
+            return view('frontend.pages.shop-product',['keyWord'=>'','cateID'=>$request->cateID]);
+        }
+        return view('frontend.pages.shop-product',['keyWord'=>'','cateID'=>'']);
+
     }
     public function product_detail($idProduct){
         //$product=Product::find($idProduct);

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Session;
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="{{ route('index') }}"><img src="img/logo.png" alt=""></a>
+            <a href="{{ route('index') }}"><img src="/img/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>

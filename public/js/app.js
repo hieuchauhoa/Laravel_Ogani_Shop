@@ -18,7 +18,13 @@ app.controller('AppController', function($scope,$http){
   $scope.sort='';
 
   $scope.keyword=function(key) {
+    console.log("chay "+key);
     $scope.key=key;
+    $scope.getproduct();
+  };
+  $scope.keywordAndcateID=function(key,id) {
+    $scope.key=key;
+    $scope.id=id;
     $scope.getproduct();
   };
   $scope.cateID=function(id) {

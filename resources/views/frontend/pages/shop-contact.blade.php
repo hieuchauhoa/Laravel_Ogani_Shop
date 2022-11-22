@@ -4,31 +4,26 @@
 <section class="hero hero-normal">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+            <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul >
-                            <li ng-repeat="cat in categories" ng-if="cat.parent_id==0">
-                                <a href="#">@{{cat.name}}</a>
-                                
-                                    <li ng-repeat="cate in categories" ng-if="cate.parent_id==cat.id"><a href="#"> -- @{{cate.name}}</a></li>
-                                
+                        <ul ng-repeat="cat in categories" ng-if="cat.parent_id==0">
+                            <li>
+                                <a href>@{{cat.name}}</a>
+                                <li ng-repeat="cate in categories" ng-if="cate.parent_id==cat.id"><a href="/product?cateID=@{{cate.id}}" ng-click="cateID(cate.id)"> -- @{{cate.name}}</a></li>
                             </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
                         <div class="hero__search__form">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="What do yo u need?">
-                                <button type="submit" class="site-btn">SEARCH</button>
+                            <form action="/product" method="get">
+                                <input type="text" placeholder="What do you need?" ng-model="key" name="keyword">
+                                <button type="submit" ng-click="keyword(key)" class="site-btn">SEARCH</button>
                             </form>
                         </div>
                         <div class="hero__search__phone">
