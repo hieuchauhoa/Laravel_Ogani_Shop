@@ -238,13 +238,13 @@
                                     <div class="sidebar__item__size">
                                         <label for="sort2">
                                             A-Z
-                                            <input type="radio" id="sort2" ng-click="getSort('name')">
+                                            <input type="radio" id="sort2" ng-click="getSort('ASC')">
                                         </label>
                                     </div>
                                     <div class="sidebar__item__size">
                                         <label for="sort3">
                                             Z-A
-                                            <input type="radio" id="sort3" ng-click="getSort('name')">
+                                            <input type="radio" id="sort3" ng-click="getSort('DESC')">
                                         </label>
                                     </div>
                                 </div>

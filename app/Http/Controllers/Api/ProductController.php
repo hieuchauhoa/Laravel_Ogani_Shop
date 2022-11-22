@@ -21,7 +21,7 @@ class ProductController extends Controller
             if($request->sort){
                 $prod =Product::where('slug','like','%'.$request->keyword.'%')  
                 ->orWhere('name','like','%'.$request->keyword.'%')
-                ->orderBy($request->sort)
+                ->orderBy('name',$request->sort)
                 ->paginate(6);
             }
             else{
@@ -33,7 +33,7 @@ class ProductController extends Controller
         }
         else if($request->cateID){
             if($request->sort){
-                $prod =Product::where('cate_id',$request->cateID)->orderBy($request->sort)->paginate(6);
+                $prod =Product::where('cate_id',$request->cateID)->orderBy('name',$request->sort)->paginate(6);
             }
             else{
                 $prod =Product::where('cate_id',$request->cateID)->paginate(6);
@@ -41,7 +41,7 @@ class ProductController extends Controller
         }
         else{
             if($request->sort){
-                $prod =Product::orderBy($request->sort)->paginate(6);
+                $prod =Product::orderBy('name',$request->sort)->paginate(6);
             }
             else{
                 $prod =Product::paginate(6);
