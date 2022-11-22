@@ -12,6 +12,7 @@ use \App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserControllerFE;
+use App\Http\Controllers\CartController;
 
 
 #FE
@@ -25,8 +26,10 @@ Route::prefix('/')->group(function (){
     });
     Route::get('contact',[FrontEndController::class,'contact'])->name('contact');
     //cart
-    Route::post('/saveCart',[CartController::class,'save_cart']);
-
+    Route::post('saveCart',[CartController::class,'save_cart']);
+    Route::get('showcart',[CartController::class,'show_cart']);
+    Route::get('delete-to-cart/{rowId}',[CartController::class,'delete_to_cart']);
+    Route::post('updateQty',[CartController::class,'update_cart_qty']);
 
 });
 #Trí

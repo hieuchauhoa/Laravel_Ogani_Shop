@@ -92,7 +92,7 @@
                         </div>
                         <div class="product__details__price">@{{productSingle.price}}đ</div>
                         <p>@{{productSingle.r_intro}}</p>
-                        <form action="/saveCart" menthod="POST">
+                        <form action="/saveCart" method="post">
                             {{ csrf_field() }}
                             <div class="product__details__quantity">
                                 <div class="quantity">

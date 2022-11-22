@@ -158,7 +158,7 @@
                                 <h4>Latest Products</h4>
                                 <div class="latest-product__slider owl-carousel">
                                     <div class="latest-prdouct__slider__item" ng-repeat="pro in productsLast">
-                                        <a href="#" class="latest-product__item">
+                                        <a href="/product-detail/@{{pro[0].id}}" class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="@{{pro[0].images}}" alt="">
                                             </div>
@@ -167,7 +167,7 @@
                                                 <span>@{{pro[0].price}}đ</span>
                                             </div>
                                         </a>
-                                        <a href="#" class="latest-product__item">
+                                        <a href="/product-detail/@{{pro[1].id}}" class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="@{{pro[1].images}}" alt="">
                                             </div>
@@ -176,7 +176,7 @@
                                                 <span>@{{pro[1].price}}đ</span>
                                             </div>
                                         </a>
-                                        <a href="#" class="latest-product__item">
+                                        <a href="/product-detail/@{{pro[2].id}}" class="latest-product__item">
                                             <div class="latest-product__item__pic">
                                                 <img src="@{{pro[2].images}}" alt="">
                                             </div>
@@ -200,20 +200,25 @@
                             <div class="product__discount__slider owl-carousel">
                                 <div class="col-lg-4" ng-repeat="pro in productsAll" ng-if="pro.price_sale!=null">
                                     <div class="product__discount__item">
-                                        <div class="product__discount__item__pic set-bg"
-                                            data-setbg="@{{pro.images}}">
-                                            <div class="product__discount__percent">@{{100-(pro.price_sale/pro.price*100)| number:0}}%</div>
-                                            <ul class="product__item__pic__hover">
-                                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                            </ul>
-                                        </div>
-                                        <div class="product__discount__item__text">
-                                            <span>Iphone</span>
-                                            <h5><a href="#">@{{pro.name}}</a></h5>
-                                            <div class="product__item__price">@{{pro.price}}đ <span>@{{pro.price_sale}}đ</span></div>
-                                        </div>
+                                        <form action="/saveCart" method="post" id="form_save_cart"+@{{pro.id}}>
+                                            {{ csrf_field() }}
+                                            <input name="productid_hidden" type="hidden" value="@{{pro.id}}">
+                                            <input name="qty" type="hidden" value="1">
+                                            <div class="product__discount__item__pic set-bg"
+                                                data-setbg="@{{pro.images}}">
+                                                <div class="product__discount__percent">@{{100-(pro.price_sale/pro.price*100)| number:0}}%</div>
+                                                <ul class="product__item__pic__hover">
+                                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                                    <li><a href onclick="document.getElementById('form_save_cart').submit()"><i class="fa fa-shopping-cart"></i></a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="product__discount__item__text">
+                                                <span>Iphone</span>
+                                                <h5><a href="/product-detail/@{{pro.id}}">@{{pro.name}}</a></h5>
+                                                <div class="product__item__price">@{{pro.price}}đ <span>@{{pro.price_sale}}đ</span></div>
+                                            </div>
+                                        </form>                                      
                                     </div>
                                 </div>                              
                             </div>
@@ -254,17 +259,23 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-6" ng-repeat="pro in products">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="@{{pro.images}}">
-                                    <ul class="product__item__pic__hover">
-                                        <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6><a href="#">@{{pro.name}}</a></h6>
-                                    <h5>@{{pro.price}}đ</h5>
-                                </div>
+                                <form action="/saveCart" method="post" id="form_save_cart">
+                                    {{ csrf_field() }}
+                                    <input name="productid_hidden" type="hidden" value="@{{pro.id}}">
+                                    <input name="qty" type="hidden" value="1">
+                                    <div class="product__item__pic set-bg" data-setbg="@{{pro.images}}">
+                                        <ul class="product__item__pic__hover">
+                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                            <li><a href onclick="document.getElementById('form_save_cart').submit()"><i class="fa fa-shopping-cart"></i></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6><a href="/product-detail/@{{pro.id}}">@{{pro.name}}</a></h6>
+                                        <h5>@{{pro.price}}đ</h5>
+                                    </div>
+                                </form>
+                                
                             </div>
                         </div>
                         

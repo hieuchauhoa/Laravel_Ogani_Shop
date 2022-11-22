@@ -5,24 +5,17 @@
 <section class="hero hero-normal">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+            <div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
                             <span>All departments</span>
                         </div>
-                        <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                        <ul ng-repeat="cat in categories" ng-if="cat.parent_id==0">
+                            <li>
+                                <a href>@{{cat.name}}</a>
+                                <li ng-repeat="cate in categories" ng-if="cate.parent_id==cat.id"><a href="{{route('product')}}" ng-click="cateID(cate.id)"> -- @{{cate.name}}</a></li>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -30,10 +23,6 @@
                     <div class="hero__search">
                         <div class="hero__search__form">
                             <form action="#">
-                                <div class="hero__search__categories">
-                                    All Categories
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
                                 <input type="text" placeholder="What do yo u need?">
                                 <button type="submit" class="site-btn">SEARCH</button>
                             </form>
@@ -55,7 +44,7 @@
     <!-- Hero Section End -->
 
     <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/product/banner.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="/img/product/banner.jpg">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -89,72 +78,47 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                        <h5>Samsung S22 Utral Utral</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                        <h5>Samsung S22 Utral</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00 
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="shoping__cart__item">
-                                        <img src="https://cdn.tgdd.vn/Products/Images/42/269831/Xiaomi-redmi-note-11-black-600x600.jpeg" alt="">
-                                        <h5>Samsung S22 Utral</h5>
-                                    </td>
-                                    <td class="shoping__cart__price">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__quantity">
-                                        <div class="quantity">
-                                            <div class="pro-qty">
-                                                <input type="text" value="1">
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="shoping__cart__total">
-                                        $110.00
-                                    </td>
-                                    <td class="shoping__cart__item__close">
-                                        <span class="icon_close"></span>
-                                    </td>
-                                </tr>
+                                <?php 
+                                    $content= Cart::content();      
+                                ?>
+                                @foreach($content as $v_content)
+                                <?php
+                                     Cart::setTax($v_content->rowId, 0);
+                                 ?>
+                                    <tr>
+                                        <td class="shoping__cart__item">
+                                            <img src="{{$v_content->options->image}}" alt="">
+                                            <h5>{{$v_content->name }}</h5>
+                                        </td>
+                                        <td class="shoping__cart__price">
+                                        {{number_format($v_content->price).'đ'}}
+                                        </td>
+                                        <td class="shoping__cart__quantity">
+                                            <form action="/updateQty" method="post" >
+                                                {{ csrf_field() }}
+                                                <div class="quantity">
+                                                    <div class="pro-qty">
+                                                        <input type="text" name="quantity_cart" value="{{$v_content->qty}}">
+                                                        <input type="hidden" name="rowId_cart" value="{{$v_content->rowId}}">
+                                                    </div>
+                                                    <button type="submit" name="update_qtyt" value="cập nhật" class="primary-btn">Upadate</button>
+                                                </div>
+                                            </form>
+                                        </td>
+                                        <td class="shoping__cart__total">
+                                            <?php
+                                                $subtotal=$v_content->price*$v_content->qty;
+                                                echo number_format($subtotal).'đ';
+                                            ?>
+                                        
+                                        </td>
+                                        <td class="shoping__cart__item__close">
+                                            <a href="/delete-to-cart/{{$v_content->rowId}}"><span class="icon_close"></span></a>
+                                        </td>
+                                    </tr>
+                                 
+                                
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -163,9 +127,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
-                        <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                        <a href="{{route('product')}}" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
@@ -183,8 +145,10 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li>Tổng: <span>{{Cart::priceTotal().'đ'}}</span></li>
+                            <li>Thuế: <span>{{Cart::tax().'đ'}}</span></li>
+                            <li>Phí vận chuyển: <span>Free</span></li>
+                            <li>Thành tiền:  <span>{{Cart::total().'đ'}}</span></li>
                         </ul>
                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>

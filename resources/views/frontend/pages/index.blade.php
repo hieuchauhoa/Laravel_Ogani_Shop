@@ -83,18 +83,23 @@
             <div class="row featured__filter" >
                 <div ng-repeat="pro in productsAll" class="col-lg-3 col-md-4 col-sm-6 mix category@{{pro.cate_id}}">
                     <div class="featured__item">
-                        <div class="featured__item__pic set-bg" data-setbg="@{{pro.images}}">
-                            <ul class="featured__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="featured__item__text">
-                            <h6><a href="/product-detail/@{{pro.id}}">@{{pro.name}}</a></h6>
-                            <!-- <h6><a href="/product-detail">@{{pro.name}}</a></h6> -->
-                            <h5>@{{pro.price}}đ</h5>
-                        </div>
+                        <form action="/saveCart" method="post" id="form_save_cart">
+                            {{ csrf_field() }}
+                            <input name="productid_hidden" type="hidden" value="@{{pro.id}}">
+                            <input name="qty" type="hidden" value="1">
+                            <div class="featured__item__pic set-bg" data-setbg="@{{pro.images}}">
+                                <ul class="featured__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href id="icon_save_cart" onclick="document.getElementById('form_save_cart').submit()"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="featured__item__text">
+                                <h6><a href="/product-detail/@{{pro.id}}">@{{pro.name}}</a></h6>
+                                <!-- <h6><a href="/product-detail">@{{pro.name}}</a></h6> -->
+                                <h5>@{{pro.price}}đ</h5>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 
