@@ -1,3 +1,6 @@
+<?php 
+use Illuminate\Support\Facades\Session;
+?>
 <!-- Page Preloder -->
 <div id="preloder">
         <div class="loader"></div>
@@ -68,8 +71,61 @@
                             </div>
                             
                             <div class="header__top__right__auth">
-                                <a href="#"><i class="fa fa-user"></i> Login</a>
+                           
+
+
+                             @if(Session::get('name'))
+                                <div class="btn-group">
+                                  
+                                <button type="button" onclick="dropdown()" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+                                 {{
+                                    Session::get('name')
+                                    
+                                 }}      
+
+                                    
+                                  
+                                
+                                </button>
+                             
+                               
+                                <div class="dropdown-menu" id="dropdown-menu" >
+                                    <a class="dropdown-item" href="{{route('profile')}}">Profile</a>
+                                
+                                    <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{route('logout')}}">Đăng xuất</a>
+                                </div>
+                                </div>
+                                <script >
+                                    function dropdown(){
+                                        var menu = document.getElementById('dropdown-menu');   
+                                        if(menu.style.display=='block'){
+                                            menu.style.display='none';
+
+                                        }else{
+                                            menu.style.display='block';
+                                        }
+                                    }
+                                </script>
+                               
+                             @endif 
+                            @empty(Session::get('name'))   
+                                <a href="{{route('showlogin')}}"><i class="fa fa-user"></i> 
+                            
+
+                            
+                              đăng nhập
+
+                            
+
+                                
+                                </a>
+                             @endempty   
+                               
+                             
                             </div>
+                           
                         </div>
                     </div>
                 </div>

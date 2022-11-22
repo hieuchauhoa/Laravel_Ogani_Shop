@@ -28,7 +28,7 @@ class UserService
             Session::flash('success', 'Thêm tài khoản thành công');
         } catch (\Exception $err){
             Session::flash('error', 'Thêm tào khoản lỗi !');
-            \Log::info($err->getMessage());
+            Log::info($err->getMessage());
             return false;
         }
         return true;

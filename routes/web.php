@@ -10,6 +10,8 @@ use \App\Http\Controllers\Admin\UploadController;
 use \App\Http\Controllers\Admin\OrderController;
 use \App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\FrontEndController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserControllerFE;
 
 
 #FE
@@ -27,6 +29,17 @@ Route::prefix('/')->group(function (){
 
 
 });
+#Trí
+Route::get('/profile',[ProfileController::class,'profile'])->name(("profile"));
+Route::post('login',[UserControllerFE::class,'Login'])->name(('loginUser'));
+Route::get('showlogin',[UserControllerFE::class,'showLogin'])->name(("showlogin"));
+Route::post('register',[UserControllerFE::class,'register'])->name(('register'));
+Route::get('showregister',[UserControllerFE::class,'showRegister'])->name(("ShowRegister"));
+Route::get('logout',[UserControllerFE::class,'logout'])->name(("logout"));
+Route::get('/home',[UserControllerFE::class,'Dashboard'])->middleware('isLoggedIn');
+
+
+
     ##Admin
     Route::get('/admin/login',[LoginController::class,'index'])->name('login');
     Route::post('/admin/admin_login',[LoginController::class, 'store']);
