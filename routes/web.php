@@ -39,12 +39,25 @@ Route::prefix('/')->group(function (){
 });
 #Trí
 Route::get('/profile',[ProfileController::class,'profile'])->name(("profile"));
-Route::post('login',[UserControllerFE::class,'Login'])->name(('loginUser'));
-Route::get('showlogin',[UserControllerFE::class,'showLogin'])->name(("showlogin"));
-Route::post('register',[UserControllerFE::class,'register'])->name(('register'));
-Route::get('showregister',[UserControllerFE::class,'showRegister'])->name(("ShowRegister"));
-Route::get('logout',[UserControllerFE::class,'logout'])->name(("logout"));
+
+#user
+Route::post('/login',[UserControllerFE::class,'Login'])->name(('loginUser'));
+Route::get('/showlogin',[UserControllerFE::class,'showLogin'])->name(("showlogin"));
+Route::post('/register',[UserControllerFE::class,'register'])->name(('register'));
+Route::get('/showregister',[UserControllerFE::class,'showRegister'])->name(("ShowRegister"));
+Route::get('/vertified/{user}/{token}',[UserControllerFE::class,'vertified'])->name(("vertified"));
+
+Route::get('/forgot-password',[UserControllerFE::class,'show_forgot_password'])->name(("forgot-password"));
+Route::post('/forgot-password',[UserControllerFE::class,'forgot_password'])->name(("forgotPass"));
+
+Route::get('/get-password/{user}/{token}',[UserControllerFE::class,'get_password'])->name(("getpassword"));
+Route::post('/get-password/{user}/{token}',[UserControllerFE::class,'post_password'])->name(("postpassword"));
+
+Route::get('/logout',[UserControllerFE::class,'logout'])->name(("logout"));
 Route::get('/home',[UserControllerFE::class,'Dashboard'])->middleware('isLoggedIn');
+
+#SEND MAIL 
+Route::get('send_mail',[UserControllerFE::class,'send_mail']);
 
 
 

@@ -16,5 +16,5 @@
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="frontend/css/styleRegister.css" type="text/css">
+    <link rel="stylesheet" href="/css/styleRegister.css" type="text/css">
     

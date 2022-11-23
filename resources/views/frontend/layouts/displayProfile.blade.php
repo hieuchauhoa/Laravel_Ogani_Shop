@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{("public/frontend/css/owl.carousel.min.css")}}" type="text/css">
     <link rel="stylesheet" href="{{("public/frontend/css/slicknav.min.css")}}" type="text/css">
     <link rel="stylesheet" href="{{("public/frontend/css/style.css")}}" type="text/css"> -->
-    <link rel="stylesheet" href="frontend/css/profile.css" type="text/css">
+    <link rel="stylesheet" href="/css/profile.css" type="text/css">
     
    <!-- <script src="{{("public/frontend/js/jquery-3.3.1.min.js")}}"></script>
     <script src="{{("public/frontend/js/bootstrap.min.js")}}"></script>

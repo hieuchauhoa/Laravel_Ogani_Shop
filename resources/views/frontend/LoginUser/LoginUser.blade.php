@@ -16,10 +16,10 @@
 					
                     @if(Session::has('success')) 
 					
-                    <div class="alert alert-success">{{Session::get('success')}}</div>
+                    <div class="alert alert-success">{!!Session::get('success')!!}</div>
                      @endif
                     @if(Session::has('fail')) 
-                         <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                         <div class="alert alert-danger">{!!Session::get('fail')!!}</div>
                     @endif
 				
                     @csrf
@@ -57,7 +57,7 @@
 					Bạn chưa có tài khoản ?<a href="{{route('ShowRegister')}}">Đăng ký</a>
 				</div>
 				<div class="d-flex justify-content-center">
-					<a href="#">Quên mật khẩu?</a>
+					<a href="{{route('forgot-password')}}">Quên mật khẩu?</a>
 				</div>
 			</div>
 		</div>
