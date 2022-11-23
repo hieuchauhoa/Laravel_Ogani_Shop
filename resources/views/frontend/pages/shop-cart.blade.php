@@ -150,7 +150,7 @@
                             <li>Phí vận chuyển: <span>Free</span></li>
                             <li>Thành tiền:  <span>{{Cart::total().'đ'}}</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+                        <a href="/check-login-checkout" class="primary-btn">PROCEED TO CHECKOUT</a>
                     </div>
                 </div>
             </div>

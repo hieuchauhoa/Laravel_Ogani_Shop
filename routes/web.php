@@ -13,6 +13,7 @@ use App\Http\Controllers\FrontEndController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserControllerFE;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 
 #FE
@@ -30,6 +31,10 @@ Route::prefix('/')->group(function (){
     Route::get('showcart',[CartController::class,'show_cart']);
     Route::get('delete-to-cart/{rowId}',[CartController::class,'delete_to_cart']);
     Route::post('updateQty',[CartController::class,'update_cart_qty']);
+    //checkout
+    Route::get('check-login-checkout',[CheckoutController::class,'check_login_checkout']);
+    Route::post('save-checkout-cus',[CheckoutController::class,'save_checkout_cus']);
+    Route::get('checkout',[CheckoutController::class,'show_checkout']);
 
 });
 #Trí
