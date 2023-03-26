@@ -38,7 +38,7 @@ Phần mềm chạy tốt với độ phân giải màn hình chuẩn của máy
 ```
 3. Truy cập: "http://localhost:8000/"
 ```
-## Demo qua một phần của website: 
+## Demo qua một phần của website: (note: ấn vào hình để đi đến video)
 
 [![Watch the video](https://img.youtube.com/vi/lbYrthEaR8w/maxresdefault.jpg)](https://youtu.be/lbYrthEaR8w)
 
