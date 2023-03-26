@@ -2,7 +2,7 @@
 
 ![](<https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg>)
 
-![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master) ![](https://img.shields.io/github/tag/pandao/editor.md.svg)
+
 
 ## Thành viên nhóm
 
