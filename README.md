@@ -40,4 +40,4 @@ Phần mềm chạy tốt với độ phân giải màn hình chuẩn của máy
 ```
 ## Demo qua một phần của website: 
 
-{@youtube: https://www.youtube.com/watch?v=lbYrthEaR8w}
+{@youtube: https://www.youtube.com/watch?v=lbYrthEaR8w }
